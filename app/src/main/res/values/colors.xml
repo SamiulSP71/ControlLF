@@ -9,16 +9,26 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#4E4E4E</color>
     <color name="transparent">#00000000</color>
-    <color name="transparent_bg">#80002342</color>
+    <color name="transparent_bg">#594E649E</color>
+    <color name="textbg">#80031027</color>
+    <color name="tr_bg_str">#990A1A37</color>
 
     <color name="nav_bg">#08273C</color>
     <color name="nav_icoxt">#6D91A5</color>
     <color name="nav_icoxtchk">#2AB1EF</color>
 
-    <color name="button_clr">#8000397E</color>
-    <color name="button_clr_chk">#990055BC</color>
-    <color name="button_strk">#80000000</color>
-    <color name="button_strk_chk">#99001343</color>
+    <!--    Button Color-->
+    <color name="button_clr_st">#80599AEA</color>
+    <color name="button_clr">#9910396A</color>
+    <color name="button_str">#99001339</color>
+
+    <color name="button_clr_st_chk">#99104F87</color>
+    <color name="button_clr_chk">#B33988FF</color>
+    <color name="button_str_chk">#B3091A45</color>
+    <!--    Button Color-->
+    <color name="bgcolorst">#0F0947</color>
+    <color name="bgcolorcn">#116F95</color>
+    <color name="bgcolornd">#001040</color>
 
 
 

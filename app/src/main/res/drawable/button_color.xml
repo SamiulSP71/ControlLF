@@ -2,19 +2,29 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="false">
         <shape android:shape="rectangle">
-            <solid android:color="@color/button_clr"/>
-            <corners android:topRightRadius="15dp"
+            <gradient android:angle="135"
+                android:startColor="@color/button_clr_st"
+                android:centerColor="@color/button_clr"
+                android:endColor="@color/button_clr_st"
                 />
-            <stroke android:color="@color/button_strk"
+            <corners android:topRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                />
+            <stroke android:color="@color/button_str"
                 android:width="1.5dp"/>
         </shape>
     </item>
     <item android:state_checked="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/button_clr_chk"/>
-            <corners android:topRightRadius="15dp"
+            <gradient android:angle="135"
+                android:startColor="@color/button_clr_st_chk"
+                android:centerColor="@color/button_clr_chk"
+                android:endColor="@color/button_clr_st_chk"
                 />
-            <stroke android:color="@color/button_strk_chk"
+            <corners android:topRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                />
+            <stroke android:color="@color/button_str_chk"
                 android:width="1.5dp"/>
         </shape>
     </item>

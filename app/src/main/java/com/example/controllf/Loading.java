@@ -17,10 +17,10 @@ public class Loading extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(Loading.this, MainActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 finish();
             }
-        },200);
+        },1200);
 
     }
 }

@@ -19,7 +19,7 @@ BottomNavigationView bottomNavigationView;
         setContentView(R.layout.activity_more);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.control);
+        bottomNavigationView.setSelectedItemId(R.id.more);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
