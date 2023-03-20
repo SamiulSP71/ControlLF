@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Setup"
+    android:background="@color/gray">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/mobile_background"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/SetupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="Setup Your Room Here"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerInParent="true"
+                android:background="@drawable/transparent_bg">
+
+                <RelativeLayout
+                    android:id="@+id/ButtonsPart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="15dp">
+
+                    <RelativeLayout
+                        android:id="@+id/LightPart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/LtQn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/LtQnIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/light"
+                                />
+                        <TextView
+                            android:id="@+id/LtQnTxt"
+                            android:layout_toEndOf="@id/LtQnIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="How many Lights do you want to control?"
+                            android:textColor="@color/white"
+
+                            />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/LtBtnPart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/LtQn"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp">
+
+                            <RadioGroup
+                                android:id="@+id/LtGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                               
+
+                                <RadioButton
+                                    android:id="@+id/LtBtn1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:background="@drawable/button_color"
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+                                    android:paddingBottom="15dp"
+
+                                    android:text="1"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                                <RadioButton
+                                    android:id="@+id/LtBtn2"
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="2"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+                            
+                                <RadioButton
+                                    android:id="@+id/LtBtn3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="3"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                                <RadioButton
+                                    android:id="@+id/LtBtn4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="4"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+                          
+                            </RadioGroup>
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/FanPart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/LightPart"
+                        android:layout_marginTop="15dp">
+                        <RelativeLayout
+                            android:id="@+id/FanQn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/FanQnIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:textColor="@color/white"
+                            android:layout_centerVertical="true"
+                            app:drawableStartCompat="@drawable/fan"
+                            />
+                        <TextView
+                            android:id="@+id/FanQntxt"
+                            android:layout_toEndOf="@id/FanQnIcon"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_centerVertical="true"
+
+                            android:textColor="@color/white"
+                            android:text="How many Fans do you want to Control?"
+                            />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/FanBtnPart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/FanQn"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp">
+
+                            <RadioGroup
+                                android:id="@+id/FanGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/FanBtn1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:background="@drawable/button_color"
+                                    android:button="@color/transparent"
+
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+                                    android:paddingBottom="15dp"
+
+                                    android:text="1"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                                <RadioButton
+                                    android:id="@+id/FanBtn2"
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="2"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                                <RadioButton
+                                    android:id="@+id/FanBtn3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/LtBtn1"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="3"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+
+                                <RadioButton
+                                    android:id="@+id/FanBtn4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/button_color"
+
+                                    android:button="@color/transparent"
+                                    android:paddingStart="25dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="25dp"
+
+                                    android:paddingBottom="15dp"
+
+                                    android:text="4"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+
+                                    />
+                            </RadioGroup>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/FanPart"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp">
+
+                        <RelativeLayout
+                            android:id="@+id/ConnectButton"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:clickable="true"
+
+                            android:padding="15dp"
+                            android:background="@drawable/buttons"
+                            >
+                        <TextView
+                            android:id="@+id/connectIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/bluetoothwht"
+                            android:layout_centerVertical="true"
+
+                            />
+                        <TextView
+                            android:layout_toEndOf="@id/connectIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_centerVertical="true"
+                            android:text="Connect"
+                            android:textColor="@color/white"
+                            />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="PrivateResource"
+
+        android:background="@drawable/nav_background"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+
+        app:itemIconTint="@color/nav_icon_text"
+        app:itemTextColor="@color/nav_icon_text"
+
+        app:menu="@menu/bottom_navigation_menu"/>
+
+</RelativeLayout>

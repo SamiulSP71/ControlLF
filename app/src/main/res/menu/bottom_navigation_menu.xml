@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/setup"
+        android:title="Setup"
+        android:icon="@drawable/ic_setup" />
+    <item
+        android:id="@+id/control"
+        android:title="Control"
+        android:icon="@drawable/ic_control"/>
+    <item
+        android:id="@+id/more"
+        android:title="More"
+        android:icon="@drawable/ic_more"/>
+</menu>
