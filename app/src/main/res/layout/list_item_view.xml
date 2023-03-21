@@ -7,6 +7,6 @@
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:textColor="@color/white"
-    android:background="@drawable/transparent_bg"
+    android:background="@drawable/list_view_background"
 
     />

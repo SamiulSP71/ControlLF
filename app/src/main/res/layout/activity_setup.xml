@@ -30,6 +30,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/main">
@@ -49,7 +50,7 @@
 
             <RelativeLayout
                 android:id="@+id/main"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_centerInParent="true"
@@ -57,7 +58,7 @@
 
                 <RelativeLayout
                     android:id="@+id/ButtonsPart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:padding="20dp">
@@ -65,7 +66,8 @@
                     <RelativeLayout
                         android:id="@+id/LightPart"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
 
                         <RelativeLayout
                             android:id="@+id/LtQn"
@@ -200,7 +202,7 @@
 
                     <RelativeLayout
                         android:id="@+id/FanPart"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/LightPart"
                         android:layout_marginTop="15dp">
@@ -210,6 +212,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/textbackground"
+                            android:layout_centerHorizontal="true"
                             android:padding="5dp">
 
                             <TextView
@@ -337,25 +340,21 @@
                     </RelativeLayout>
 
 
-
                 </RelativeLayout>
             </RelativeLayout>
 
-            <ScrollView
-                android:id="@+id/scrollview"
-                android:visibility="gone"
-                android:layout_above="@id/yo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/textbackground"
-                >
 
-                <ListView
-                    android:id="@+id/blueList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-            </ScrollView>
+
+            <ListView
+                android:visibility="gone"
+                android:id="@+id/blueList"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+
+                android:layout_centerInParent="true"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+
             <RelativeLayout
                 android:id="@+id/yo"
                 android:layout_width="wrap_content"
@@ -364,36 +363,26 @@
                 android:layout_centerHorizontal="true"
                 >
 
-                <RelativeLayout
-                    android:id="@+id/connectButton"
+                <TextView
 
+                    android:id="@+id/connectButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+
+                    android:layout_marginStart="5dp"
+
+                    app:drawableStartCompat="@drawable/bluetoothwht"
+
+                    android:drawablePadding="5dp"
                     android:background="@drawable/buttons"
-                    android:clickable="true"
-                    android:padding="15dp">
 
-                    <TextView
-                        android:id="@+id/connectIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Connect"
+                    android:textColor="@color/white" />
 
-                        app:drawableStartCompat="@drawable/bluetoothwht" />
 
-                    <TextView
-                        android:id="@+id/connectTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-
-                        android:layout_marginStart="5dp"
-                        android:layout_toEndOf="@id/connectIcon"
-
-                        android:text="Connect"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
 
             </RelativeLayout>
 

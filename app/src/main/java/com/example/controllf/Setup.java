@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("ALL")
@@ -32,7 +34,7 @@ public class Setup extends AppCompatActivity {
     String[] permissions = {"android.permission.BLUETOOTH","android.permission.BLUETOOTH_ADMIN",
             "android.permission.BLUETOOTH_CONNECT","android.permission.BLUETOOTH_SCAN"};
     BottomNavigationView bottomNavigationView;
-    BluetoothAdapter mbluetoothAdapter;
+    BluetoothAdapter bluetoothAdapter;
 
     Set<BluetoothDevice> pairedDevices;
 
@@ -71,9 +73,9 @@ public class Setup extends AppCompatActivity {
         RadioGroup FanGroup = findViewById(R.id.FanGroup);
 
         ListView listView = findViewById(R.id.blueList);
-        RelativeLayout connectbtn = findViewById(R.id.connectButton);
-        TextView connectname = findViewById(R.id.connectTxt);
-        ScrollView scrollView = findViewById(R.id.scrollview);
+        TextView connectbtn = findViewById(R.id.connectButton);
+
+
         // Add a listener to the radio group
 
         LtGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -112,30 +114,47 @@ public class Setup extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: Add code to get the list of available Bluetooth devices
 
-                if (Build.VERSION.SDK_INT >= 31){
+
+                if (Build.VERSION.SDK_INT >= 31) {
                     requestPermissions(permissions, 80);
                 }
                 pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
-                if (scrollView.getVisibility() == View.GONE) {
-                    scrollView.setVisibility(View.VISIBLE);
+                if (listView.getVisibility() == View.GONE) {
+                    listView.setVisibility(View.VISIBLE);
                 } else {
-                    scrollView.setVisibility(View.GONE);
+                    listView.setVisibility(View.GONE);
                 }
 
                 ArrayList<String> deviceList = new ArrayList<String>();
-                for(BluetoothDevice device : pairedDevices)
+                for (BluetoothDevice device : pairedDevices) {
                     deviceList.add(device.getName());
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item_view, deviceList);
-                listView.setAdapter(adapter);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item_view, deviceList);
+                    listView.setAdapter(adapter);
 
-                BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-                if (Build.VERSION.SDK_INT >= 31) {
-                    mbluetoothAdapter = bluetoothManager.getAdapter();
-                } else {
-                    mbluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                    BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+
+                    if (Build.VERSION.SDK_INT >= 31) {
+
+                        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+                    } else {
+                        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                    }
+                    List<BluetoothDevice> connectedDevices = bluetoothManager.getConnectedDevices(BluetoothProfile.GATT);
+                    Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
+                    if (device.getBondState() == BluetoothDevice.BOND_BONDED && connectedDevices.contains(device)) {
+                        String deviceName = device.getName();
+                        connectbtn.setText("Connected" + deviceName);
+
+                    }
+
+
+                    if (bluetoothAdapter != null && bluetoothAdapter.isEnabled()) {
+                        //yo
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Turn on the Bluetooth", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
 
             }
         });
@@ -154,7 +173,9 @@ public class Setup extends AppCompatActivity {
                 //yo
             }else {
                 Toast.makeText(this,"Not Connected", Toast.LENGTH_SHORT).show();
+                requestPermissions(permissions, 80);
             }
         }
     }
+
 }
