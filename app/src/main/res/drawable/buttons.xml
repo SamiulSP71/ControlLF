@@ -16,9 +16,9 @@
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <gradient android:angle="135"
-                android:startColor="@color/button_clr_st"
-                android:centerColor="@color/button_clr"
-                android:endColor="@color/button_clr_st"
+                android:startColor="@color/button_clr_st_chk"
+                android:centerColor="@color/button_clr_chk"
+                android:endColor="@color/button_clr_st_chk"
                 />
             <corners android:topRightRadius="15dp"
                 android:bottomLeftRadius="15dp"/>
