@@ -1,4 +1,5 @@
 package com.example.controllf;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class Setup extends AppCompatActivity {
     BluetoothAdapter bluetoothAdapter;
 
     private RadioGroup ltGroup, fanGroup;
-    private SharedPreferences ltGroupPrefs, fanGroupPrefs;
+    private SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,59 +62,60 @@ public class Setup extends AppCompatActivity {
                     }
                 });
 
-        ListView listView = findViewById(R.id.blueList);
+
         TextView connectbtn = findViewById(R.id.connectButton);
+        RadioGroup LtGroup = findViewById(R.id.LtGroup);
+        RadioGroup FanGroup = findViewById(R.id.FanGroup);
 
-        ltGroup = findViewById(R.id.LtGroup);
-        fanGroup = findViewById(R.id.FanGroup);
+        // Retrieve shared preferences
+        prefs = getPreferences(Context.MODE_PRIVATE);
 
-        // Get the SharedPreferences instances
-        ltGroupPrefs = getSharedPreferences("LtGroupPrefs", MODE_PRIVATE);
-        fanGroupPrefs = getSharedPreferences("FanGroupPrefs", MODE_PRIVATE);
-
-        // Load the saved data from SharedPreferences and set the corresponding radio buttons as checked
-        int selectedButtonIdLtGroup = ltGroupPrefs.getInt("selectedButtonId", -1);
-        if (selectedButtonIdLtGroup != -1) {
-            ltGroup.check(selectedButtonIdLtGroup);
-        }
-        int selectedButtonIdFanGroup = fanGroupPrefs.getInt("selectedButtonId", -1);
-        if (selectedButtonIdFanGroup != -1) {
-            fanGroup.check(selectedButtonIdFanGroup);
+        // Set LtGroup buttons' checked state
+        for (int i = 1; i <= 4; i++) {
+            int buttonId = getResources().getIdentifier("ltButton" + i, "id", getPackageName());
+            RadioButton button = findViewById(buttonId);
+            button.setChecked(prefs.getBoolean("LtGroupPref_" + i, false));
         }
 
-        // Set a listener to detect when a radio button is checked
-        RadioGroup.OnCheckedChangeListener radioGroupListener = new RadioGroup.OnCheckedChangeListener() {
+        // Set FanGroup buttons' checked state
+        for (int i = 1; i <= 4; i++) {
+            int buttonId = getResources().getIdentifier("fanButton" + i, "id", getPackageName());
+            RadioButton button = findViewById(buttonId);
+            button.setChecked(prefs.getBoolean("FanGroupPref_" + i, false));
+        }
+
+        // Set LtGroup buttons' onCheckedChangeListener
+        RadioGroup ltGroup = findViewById(R.id.LtGroup);
+        ltGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Save the selected button's ID to SharedPreferences
-                SharedPreferences.Editor editor;
-                if (group == ltGroup) {
-                    editor = ltGroupPrefs.edit();
-                } else {
-                    editor = fanGroupPrefs.edit();
+                RadioButton button = findViewById(checkedId);
+                int index = ltGroup.indexOfChild(button) + 1;
+                prefs.edit().putBoolean("LtGroupPref_" + index, true).apply();
+                for (int i = 1; i <= 4; i++) {
+                    if (i != index) {
+                        prefs.edit().putBoolean("LtGroupPref_" + i, false).apply();
+                    }
                 }
-                editor.putInt("selectedButtonId", checkedId);
-                editor.apply();
             }
-        };
-        ltGroup.setOnCheckedChangeListener(radioGroupListener);
-        fanGroup.setOnCheckedChangeListener(radioGroupListener);
+        });
 
-        // Loop through all child views of the RadioGroups to set their click listeners
-        for (int i = 0; i < ltGroup.getChildCount(); i++) {
-            View view = ltGroup.getChildAt(i);
-            if (view instanceof RadioButton) {
-                ((RadioButton) view).setClickable(true);
-                ((RadioButton) view).setFocusable(true);
+        // Set FanGroup buttons' onCheckedChangeListener
+        RadioGroup fanGroup = findViewById(R.id.FanGroup);
+        fanGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton button = findViewById(checkedId);
+                int index = fanGroup.indexOfChild(button) + 1;
+                prefs.edit().putBoolean("FanGroupPref_" + index, true).apply();
+                for (int i = 1; i <= 4; i++) {
+                    if (i != index) {
+                        prefs.edit().putBoolean("FanGroupPref_" + i, false).apply();
+                    }
+                }
             }
-        }
-        for (int i = 0; i < fanGroup.getChildCount(); i++) {
-            View view = fanGroup.getChildAt(i);
-            if (view instanceof RadioButton) {
-                ((RadioButton) view).setClickable(true);
-                ((RadioButton) view).setFocusable(true);
-            }
-        }
+        });
+
         connectbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
