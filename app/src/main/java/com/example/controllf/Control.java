@@ -19,8 +19,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Control extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    private SharedPreferences prefs;
-
+    private TextView ltTextView;
+    private TextView fanTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,52 +32,61 @@ public class Control extends AppCompatActivity {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.setup:
                         startActivity(new Intent(getApplicationContext(), Setup.class));
                         finish();
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.control:
                         return true;
                     case R.id.more:
                         startActivity(new Intent(getApplicationContext(), More.class));
                         finish();
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
 
-        // Retrieve shared preferences
-        prefs = getPreferences(Context.MODE_PRIVATE);
-        // Get LtGroup checked button name and display in TextView
-        TextView ltGroupText = findViewById(R.id.ForLtGroup);
-        if (prefs.getBoolean("LtGroupPref_1", false)) {
-            ltGroupText.setText("Button 1 is checked in LtGroup");
-        } else if (prefs.getBoolean("LtGroupPref_2", false)) {
-            ltGroupText.setText("Button 2 is checked in LtGroup");
-        } else if (prefs.getBoolean("LtGroupPref_3", false)) {
-            ltGroupText.setText("Button 3 is checked in LtGroup");
-        } else if (prefs.getBoolean("LtGroupPref_4", false)) {
-            ltGroupText.setText("Button 4 is checked in LtGroup");
-        } else {
-            ltGroupText.setText("No buttons are checked in LtGroup");
-        }
 
-        // Get FanGroup checked button name and display in TextView
-        TextView fanGroupText = findViewById(R.id.ForFanGroup);
-        if (prefs.getBoolean("FanGroupPref_1", false)) {
-            fanGroupText.setText("Button 1 is checked in FanGroup");
-        } else if (prefs.getBoolean("FanGroupPref_2", false)) {
-            fanGroupText.setText("Button 2 is checked in FanGroup");
-        } else if (prefs.getBoolean("FanGroupPref_3", false)) {
-            fanGroupText.setText("Button 3 is checked in FanGroup");
-        } else if (prefs.getBoolean("FanGroupPref_4", false)) {
-            fanGroupText.setText("Button 4 is checked in FanGroup");
-        } else {
-            fanGroupText.setText("No buttons are checked in FanGroup");
+        // Load the saved preferences for each group
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String ltPref = prefs.getString("LtGroupPref", "");
+        String fanPref = prefs.getString("FanGroupPref", "");
+
+        // Set the button names in the TextViews
+        if (!ltPref.isEmpty()) {
+            String[] ltIds = ltPref.split(",");
+            for (String idStr : ltIds) {
+                int id = Integer.parseInt(idStr);
+                if (id == R.id.LtBtn1) {
+                    //
+                } else if (id == R.id.LtBtn2) {
+                    //
+                } else if (id == R.id.LtBtn3) {
+                    //
+                } else if (id == R.id.LtBtn4) {
+                    //
+                }
+            }
+        }
+        if (!fanPref.isEmpty()) {
+            String[] fanIds = fanPref.split(",");
+            for (String idStr : fanIds) {
+                int id = Integer.parseInt(idStr);
+                if (id == R.id.FanBtn1) {
+                    //
+                } else if (id == R.id.FanBtn2) {
+                    //
+                } else if (id == R.id.FanBtn3) {
+                    //
+                } else if (id == R.id.FanBtn4) {
+                    //
+                }
+            }
         }
     }
+
 }

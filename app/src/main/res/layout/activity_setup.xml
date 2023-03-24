@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-
     tools:context=".Setup">
 
     <RelativeLayout
@@ -41,8 +40,8 @@
                     android:layout_height="wrap_content"
 
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="50dp"
 
+                    android:layout_marginTop="50dp"
                     android:text="Setup Your Room Here"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
@@ -85,16 +84,17 @@
 
                             <TextView
                                 android:id="@+id/LtQnTxt"
+                                android:layout_toEndOf="@id/LtQnIcon"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+
                                 android:layout_centerVertical="true"
-
                                 android:layout_marginStart="5dp"
-                                android:layout_toEndOf="@id/LtQnIcon"
-                                android:text="How many Lights do you want to control?"
+
+                                android:textSize="16sp"
                                 android:textColor="@color/white"
-
-
+                                android:text="How many Lights do you want to control?"
                                 />
                         </RelativeLayout>
 
@@ -200,12 +200,21 @@
                         </RelativeLayout>
                     </RelativeLayout>
 
+                    <View
+                        android:id="@+id/partline"
+                        android:layout_below="@id/LightPart"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/ltgray"
+                        />
                     <RelativeLayout
                         android:id="@+id/FanPart"
+                        android:layout_below="@id/partline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/LightPart"
-                        android:layout_marginTop="15dp">
+
+                        android:layout_marginTop="20dp">
 
                         <RelativeLayout
                             android:id="@+id/FanQn"
@@ -225,15 +234,18 @@
 
                             <TextView
                                 android:id="@+id/FanQntxt"
-                                android:layout_width="wrap_content"
-
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-
-                                android:layout_marginStart="5dp"
                                 android:layout_toEndOf="@id/FanQnIcon"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="5dp"
+
+                                android:textSize="16sp"
+                                android:textColor="@color/white"
                                 android:text="How many Fans do you want to Control?"
-                                android:textColor="@color/white" />
+                                />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -343,18 +355,6 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-
-
-            <ListView
-                android:visibility="gone"
-                android:id="@+id/blueList"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-
-                android:layout_centerInParent="true"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"/>
-
             <RelativeLayout
                 android:id="@+id/yo"
                 android:layout_width="wrap_content"
@@ -371,16 +371,18 @@
                     android:layout_centerVertical="true"
 
                     android:layout_marginStart="5dp"
-
-                    app:drawableStartCompat="@drawable/bluetoothwht"
-
-                    android:drawablePadding="5dp"
                     android:background="@drawable/buttons"
 
+                    android:drawablePadding="5dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="15dp"
+
                     android:gravity="center"
-                    android:padding="15dp"
                     android:text="Connect"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/bluetoothwht" />
 
 
 

@@ -11,46 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mobile_background_blur" />
 
-        <TextView
-            android:id="@+id/ForLtGroup"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            >
 
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:text="Control"
-            />
-        <TextView
-            android:layout_toStartOf="@id/ForLtGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        </RelativeLayout>
 
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:text="For Light Group "
-            />
-
-        <TextView
-            android:id="@+id/ForFanGroup"
-            android:layout_below="@id/ForLtGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:text="Control"
-            />
-        <TextView
-            android:layout_toStartOf="@id/ForFanGroup"
-            android:layout_below="@id/ForLtGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:text="For Fan Group "
-            />
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

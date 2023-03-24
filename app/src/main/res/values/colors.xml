@@ -7,6 +7,7 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ltgray">#BEBEBE</color>
     <color name="gray">#4E4E4E</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_bg">#594E649E</color>
@@ -24,14 +25,12 @@
 
     <color name="button_clr_st_chk">#99104F87</color>
     <color name="button_clr_chk">#B33988FF</color>
-    <color name="button_str_chk">#B3091A45</color>
+    <color name="button_str_chk">#B30074DA</color>
     <!--    Button Color-->
     <color name="bgcolorst">#0F0947</color>
     <color name="bgcolorcn">#116F95</color>
     <color name="bgcolornd">#001040</color>
 
     <color name="listvbg">#CC031027</color>
-
-
 
 </resources>

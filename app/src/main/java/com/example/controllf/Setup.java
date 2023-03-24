@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.Method;
 import java.util.Set;
-import java.util.UUID;
 
 @SuppressWarnings("ALL")
 public class Setup extends AppCompatActivity {
@@ -32,6 +30,7 @@ public class Setup extends AppCompatActivity {
 
     private RadioGroup ltGroup, fanGroup;
     private SharedPreferences prefs;
+    private RadioButton RadioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,57 +61,29 @@ public class Setup extends AppCompatActivity {
                     }
                 });
 
-
+        // Find the radio groups in the layout
         TextView connectbtn = findViewById(R.id.connectButton);
-        RadioGroup LtGroup = findViewById(R.id.LtGroup);
-        RadioGroup FanGroup = findViewById(R.id.FanGroup);
-
-        // Retrieve shared preferences
-        prefs = getPreferences(Context.MODE_PRIVATE);
-
-        // Set LtGroup buttons' checked state
-        for (int i = 1; i <= 4; i++) {
-            int buttonId = getResources().getIdentifier("ltButton" + i, "id", getPackageName());
-            RadioButton button = findViewById(buttonId);
-            button.setChecked(prefs.getBoolean("LtGroupPref_" + i, false));
-        }
-
-        // Set FanGroup buttons' checked state
-        for (int i = 1; i <= 4; i++) {
-            int buttonId = getResources().getIdentifier("fanButton" + i, "id", getPackageName());
-            RadioButton button = findViewById(buttonId);
-            button.setChecked(prefs.getBoolean("FanGroupPref_" + i, false));
-        }
-
-        // Set LtGroup buttons' onCheckedChangeListener
         RadioGroup ltGroup = findViewById(R.id.LtGroup);
+        RadioGroup fanGroup = findViewById(R.id.FanGroup);
+
+        // Load the saved preferences for each group
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        loadPreferences(ltGroup, prefs.getString("LtGroupPref", ""));
+        loadPreferences(fanGroup, prefs.getString("FanGroupPref", ""));
+
+        // Set up listeners for when buttons are checked
         ltGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton button = findViewById(checkedId);
-                int index = ltGroup.indexOfChild(button) + 1;
-                prefs.edit().putBoolean("LtGroupPref_" + index, true).apply();
-                for (int i = 1; i <= 4; i++) {
-                    if (i != index) {
-                        prefs.edit().putBoolean("LtGroupPref_" + i, false).apply();
-                    }
-                }
+                // Save the preferences for this group
+                savePreferences(group, "LtGroupPref");
             }
         });
-
-        // Set FanGroup buttons' onCheckedChangeListener
-        RadioGroup fanGroup = findViewById(R.id.FanGroup);
         fanGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton button = findViewById(checkedId);
-                int index = fanGroup.indexOfChild(button) + 1;
-                prefs.edit().putBoolean("FanGroupPref_" + index, true).apply();
-                for (int i = 1; i <= 4; i++) {
-                    if (i != index) {
-                        prefs.edit().putBoolean("FanGroupPref_" + i, false).apply();
-                    }
-                }
+                // Save the preferences for this group
+                savePreferences(group, "FanGroupPref");
             }
         });
 
@@ -175,6 +146,32 @@ public class Setup extends AppCompatActivity {
         }
     }
 
+    // Helper method to load saved preferences for a given group
+    private void loadPreferences(RadioGroup group, String prefString) {
+        if (!prefString.isEmpty()) {
+            String[] parts = prefString.split(",");
+            for (String part : parts) {
+                RadioButton button = group.findViewById(Integer.parseInt(part));
+                button.setChecked(true);
+                button.setEnabled(false); // Set the button to permanently checked
+            }
+        }
+    }
 
+    // Helper method to save preferences for a given group
+    private void savePreferences(RadioGroup group, String prefName) {
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        StringBuilder prefValue = new StringBuilder();
+        for (int i=0; i<group.getChildCount(); i++) {
+            RadioButton button = (RadioButton) group.getChildAt(i);
+            if (button.isChecked()) {
+                prefValue.append(button.getId()).append(",");
+                button.setEnabled(false); // Set the button to permanently checked
+            }
+        }
+        editor.putString(prefName, prefValue.toString());
+        editor.apply();
+    }
 
 }
