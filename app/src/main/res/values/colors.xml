@@ -10,11 +10,12 @@
     <color name="ltgray">#BEBEBE</color>
     <color name="gray">#4E4E4E</color>
     <color name="transparent">#00000000</color>
-    <color name="transparent_bg">#594E649E</color>
+    <color name="transparent_bg">#804E649E</color>
     <color name="textbg">#80031027</color>
     <color name="tr_bg_str">#990A1A37</color>
 
-    <color name="nav_bg">#08273C</color>
+    <color name="nav_bg">#122D50</color>
+    <color name="nav_bg_end">#005087</color>
     <color name="nav_icoxt">#6D91A5</color>
     <color name="nav_icoxtchk">#2AB1EF</color>
 

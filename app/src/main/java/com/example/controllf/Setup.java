@@ -140,7 +140,7 @@ public class Setup extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //yo
             } else {
-                Toast.makeText(this, "Not Connected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Allow Bluetooth Permission", Toast.LENGTH_SHORT).show();
                 requestPermissions(permissions, 80);
             }
         }
@@ -153,7 +153,7 @@ public class Setup extends AppCompatActivity {
             for (String part : parts) {
                 RadioButton button = group.findViewById(Integer.parseInt(part));
                 button.setChecked(true);
-                button.setEnabled(false); // Set the button to permanently checked
+
             }
         }
     }
@@ -167,7 +167,7 @@ public class Setup extends AppCompatActivity {
             RadioButton button = (RadioButton) group.getChildAt(i);
             if (button.isChecked()) {
                 prefValue.append(button.getId()).append(",");
-                button.setEnabled(false); // Set the button to permanently checked
+
             }
         }
         editor.putString(prefName, prefValue.toString());

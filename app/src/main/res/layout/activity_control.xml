@@ -18,11 +18,212 @@
             android:src="@drawable/mobile_background_blur" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+            <RelativeLayout
+                android:id="@+id/Cn_Light_Top_Part"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+                <RelativeLayout
+                    android:id="@+id/Cn_Light_1_Part"
+                    android:layout_toStartOf="@id/topmid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_bg"
+                    android:padding="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/Cn_Light_1_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerVertical="true"
+
+                        app:drawableStartCompat="@drawable/light"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Light 1"
+                        />
+                    <ToggleButton
+                        android:id="@+id/Cn_LtBtn1"
+                        android:layout_toEndOf="@id/Cn_Light_1_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="5dp"
+                        android:button="@color/transparent"
+                        android:background="@drawable/buttons"
+
+                        android:padding="15dp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/white"
+                        android:textOn="ON"
+                        android:textOff="OFF" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/topmid"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true"
+                    />
+                <RelativeLayout
+                    android:id="@+id/Cn_Light_2_Part"
+                    android:layout_toEndOf="@id/topmid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_bg"
+                    android:padding="10dp"
+                    android:layout_marginStart="5dp"
+                    >
+                    <TextView
+                        android:id="@+id/Cn_Light_2_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerVertical="true"
+
+                        app:drawableStartCompat="@drawable/light"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Light 2"
+                        />
+                    <ToggleButton
+                        android:id="@+id/Cn_LtBtn2"
+                        android:layout_toEndOf="@id/Cn_Light_2_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="5dp"
+                        android:button="@color/transparent"
+                        android:background="@drawable/buttons"
+
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/white"
+                        android:textOn="ON"
+                        android:textOff="OFF" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Cn_Light_Bot_Part"
+                android:layout_below="@id/Cn_Light_Top_Part"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                >
+                <RelativeLayout
+                    android:id="@+id/Cn_Light_3_Part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_bg"
+                    android:padding="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/Cn_Light_3_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerVertical="true"
+
+                        app:drawableStartCompat="@drawable/light"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Light 3"
+                        />
+
+                    <ToggleButton
+                        android:id="@+id/Cn_LtBtn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@id/Cn_Light_3_Text"
+                        android:background="@drawable/buttons"
+
+                        android:button="@color/transparent"
+
+                        android:paddingStart="10dp"
+                        android:paddingTop="15dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
+
+                        android:textColor="@color/white"
+                        android:textOff="OFF"
+                        android:textOn="ON" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/Cn_Light_4_Part"
+                    android:layout_toEndOf="@id/Cn_Light_3_Part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_bg"
+                    android:padding="10dp"
+                    android:layout_marginStart="5dp"
+                    >
+                    <TextView
+                        android:id="@+id/Cn_Light_4_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerVertical="true"
+
+                        app:drawableStartCompat="@drawable/light"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:text="Light 4"
+                        />
+                    <ToggleButton
+                        android:id="@+id/Cn_LtBtn4"
+                        android:layout_toEndOf="@id/Cn_Light_4_Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="5dp"
+                        android:button="@color/transparent"
+                        android:background="@drawable/buttons"
+
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/white"
+                        android:textOn="ON"
+                        android:textOff="OFF" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
 
         </RelativeLayout>
+
 
     </RelativeLayout>
 
