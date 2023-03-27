@@ -24,7 +24,7 @@ import java.util.Set;
 public class Setup extends AppCompatActivity {
 
     String[] permissions = {"android.permission.BLUETOOTH","android.permission.BLUETOOTH_ADMIN",
-            "android.permission.BLUETOOTH_CONNECT","android.permission.BLUETOOTH_SCAN"};
+            "android.permission.BLUETOOTH_CONNECT","android.permission.BLUETOOTH_SCAN","android.permission.WRITE_EXTERNAL_STORAGE"};
     BottomNavigationView bottomNavigationView;
     BluetoothAdapter bluetoothAdapter;
 
@@ -38,8 +38,7 @@ public class Setup extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.setup);
-        bottomNavigationView.setOnNavigationItemSelectedListener
-                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @SuppressLint("NonConstantResourceId")
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -85,7 +85,7 @@
                             android:layout_height="wrap_content"
 
                             android:button="@color/transparent"
-                            android:background="@drawable/buttons"
+                            android:background="@drawable/button_color"
 
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -128,7 +128,7 @@
                             android:layout_height="wrap_content"
 
                             android:button="@color/transparent"
-                            android:background="@drawable/buttons"
+                            android:background="@drawable/button_color"
 
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -184,7 +184,7 @@
                             android:layout_height="wrap_content"
 
                             android:button="@color/transparent"
-                            android:background="@drawable/buttons"
+                            android:background="@drawable/button_color"
 
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
@@ -227,9 +227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:background="@drawable/buttons"
-                            android:button="@color/transparent"
-
+                            android:background="@drawable/button_color" android:button="@color/transparent"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
 
@@ -312,7 +310,7 @@
                             android:layout_height="wrap_content"
 
                             android:button="@color/transparent"
-                            android:background="@drawable/buttons"
+                            android:background="@drawable/button_color"
 
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"
@@ -322,6 +320,7 @@
                             android:textOff="OFF" />
                         </RelativeLayout>
                         <SeekBar
+                            android:id="@+id/seekb_fan1"
                             android:layout_width="150dp"
                             android:layout_height="24dp"
                             android:layout_below="@id/Cn_Fan1_Top"
@@ -329,7 +328,6 @@
                             android:layout_marginBottom="10dp"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:progress="4"
                             android:max="10"
                             android:thumbTint="@color/white"
                             android:thumb="@drawable/speed"
@@ -380,7 +378,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:button="@color/transparent"
-                                android:background="@drawable/buttons"
+                                android:background="@drawable/button_color"
 
                                 android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
@@ -390,6 +388,7 @@
                                 android:textOff="OFF" />
                         </RelativeLayout>
                         <SeekBar
+                            android:id="@+id/seekb_fan2"
                             android:layout_width="150dp"
                             android:layout_height="24dp"
                             android:layout_below="@id/Cn_Fan2_Top"
@@ -397,7 +396,7 @@
                             android:layout_marginBottom="10dp"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:progress="4"
+
                             android:max="10"
                             android:thumbTint="@color/white"
                             android:thumb="@drawable/speed"
@@ -458,7 +457,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:button="@color/transparent"
-                                android:background="@drawable/buttons"
+                                android:background="@drawable/button_color"
 
                                 android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
@@ -468,6 +467,7 @@
                                 android:textOff="OFF" />
                         </RelativeLayout>
                         <SeekBar
+                            android:id="@+id/seekb_fan3"
                             android:layout_width="150dp"
                             android:layout_height="24dp"
                             android:layout_below="@id/Cn_Fan3_Top"
@@ -475,7 +475,6 @@
                             android:layout_marginBottom="10dp"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:progress="4"
                             android:max="10"
                             android:thumbTint="@color/white"
                             android:thumb="@drawable/speed"
@@ -526,7 +525,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:button="@color/transparent"
-                                android:background="@drawable/buttons"
+                                android:background="@drawable/button_color"
 
                                 android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
@@ -536,6 +535,7 @@
                                 android:textOff="OFF" />
                         </RelativeLayout>
                         <SeekBar
+                            android:id="@+id/seekb_fan4"
                             android:layout_width="150dp"
                             android:layout_height="24dp"
                             android:layout_below="@id/Cn_Fan4_Top"
@@ -543,7 +543,6 @@
                             android:layout_marginBottom="10dp"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:progress="4"
                             android:max="10"
                             android:thumbTint="@color/white"
                             android:thumb="@drawable/speed"

@@ -35,5 +35,9 @@
     <color name="seekbar_clr">#CC2F7AFF</color>
     <color name="seekbar_sec_clr">#CC031027</color>
 
+    <color name="drawcolor">#41A1FF</color>
+
+
+
 
 </resources>
