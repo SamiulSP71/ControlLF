@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -42,7 +44,19 @@ BottomNavigationView bottomNavigationView;
             }
         });
 
+        TextView chkupdate = findViewById(R.id.update);
+        chkupdate.setOnClickListener(v -> {
+            Intent intent = new Intent(More.this, CheckUpdate.class);
+            intent.putExtra("url", "https://www.google.com");
+            startActivity(intent);
+        });
 
+        TextView chkmproducts = findViewById(R.id.checkpd);
+        chkmproducts.setOnClickListener(v -> {
+            Intent intent = new Intent(More.this, CheckUpdate.class);
+            intent.putExtra("url", "https://www.google.com");
+            startActivity(intent);
+        });
 
 
 

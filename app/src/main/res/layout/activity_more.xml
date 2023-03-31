@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,14 +12,104 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mobile_background_blur" />
 
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:text="More"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="@color/textbg">
+                <View
+                    android:id="@+id/border1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+                <TextView
+                    android:id="@+id/about"
+                    android:layout_below="@id/border1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/about_us"
+                    />
+
+                <View
+                    android:id="@+id/border2"
+                    android:layout_below="@id/about"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+
+                <TextView
+                    android:id="@+id/update"
+                    android:layout_below="@id/border2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Check for Update"
+                    />
+                <View
+                    android:id="@+id/border3"
+                    android:layout_below="@id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+                <TextView
+                    android:id="@+id/help"
+                    android:layout_below="@id/border3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Contact us for any Help"
+                    />
+                <View
+                    android:id="@+id/border4"
+                    android:layout_below="@id/help"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+                <TextView
+                    android:id="@+id/checkpd"
+                    android:layout_below="@id/border4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Check our More Products"
+                    />
+                <View
+                    android:id="@+id/border5"
+                    android:layout_below="@id/checkpd"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
