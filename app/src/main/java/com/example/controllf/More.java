@@ -47,7 +47,7 @@ BottomNavigationView bottomNavigationView;
         TextView chkupdate = findViewById(R.id.update);
         chkupdate.setOnClickListener(v -> {
             Intent intent = new Intent(More.this, CheckUpdate.class);
-            intent.putExtra("url", "https://www.google.com");
+            intent.putExtra("url", "https://tinyurl.com/yc5x7e7c");
             startActivity(intent);
         });
 
