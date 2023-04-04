@@ -74,44 +74,10 @@ public class Control extends AppCompatActivity {
             }
         });
 
-//        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-//
-//        // Request user to enable Bluetooth if it's not already enabled
-//        if (!bluetoothAdapter.isEnabled()) {
-//            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//            startActivityForResult(enableBtIntent, 0);
-//        }
-//
-//        // Connect to the paired Bluetooth device
-//        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-//        if (pairedDevices.size() > 0) {
-//            // Loop through paired devices until find the correct one
-//            for (BluetoothDevice device : pairedDevices) {
-//                try {
-//                    bluetoothSocket = device.createRfcommSocketToServiceRecord(UUID.randomUUID());
-//                    bluetoothSocket.connect();
-//                    break;
-//                } catch (IOException e) {
-//                    // Connection failed, try next device
-//                }
-//            }
-//        }else {
-//            //
-//        }
-//
-//        try {
-//            // Get OutputStream from Bluetooth socket
-//            outputStream = bluetoothSocket.getOutputStream();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
         // Load the saved preferences for each group
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String ltPref = prefs.getString("LtGroupPref", "");
         String fanPref = prefs.getString("FanGroupPref", "");
-
 
         // Set the button names in the TextViews
         if (!ltPref.isEmpty()) {
@@ -145,15 +111,15 @@ public class Control extends AppCompatActivity {
             }
         }
 
-        ToggleButton cn_LtBtn1 = findViewById(R.id.Cn_LtBtn1);
-        ToggleButton cn_LtBtn2 = findViewById(R.id.Cn_LtBtn2);
-        ToggleButton cn_LtBtn3 = findViewById(R.id.Cn_LtBtn3);
-        ToggleButton cn_LtBtn4 = findViewById(R.id.Cn_LtBtn4);
+        ToggleButton lt1Toggle = findViewById(R.id.Cn_LtBtn1);
+        ToggleButton lt2Toggle = findViewById(R.id.Cn_LtBtn2);
+        ToggleButton lt3Toggle = findViewById(R.id.Cn_LtBtn3);
+        ToggleButton lt4Toggle = findViewById(R.id.Cn_LtBtn4);
 
-        ToggleButton cn_FanBtn1 = findViewById(R.id.Cn_FanBtn1);
-        ToggleButton cn_FanBtn2 = findViewById(R.id.Cn_FanBtn2);
-        ToggleButton cn_FanBtn3 = findViewById(R.id.Cn_FanBtn3);
-        ToggleButton cn_FanBtn4 = findViewById(R.id.Cn_FanBtn4);
+        ToggleButton fan1Toggle = findViewById(R.id.Cn_FanBtn1);
+        ToggleButton fan2Toggle = findViewById(R.id.Cn_FanBtn2);
+        ToggleButton fan3Toggle = findViewById(R.id.Cn_FanBtn3);
+        ToggleButton fan4Toggle = findViewById(R.id.Cn_FanBtn4);
 
         TextView cn_lt_1_txt= findViewById(R.id.Cn_Light_1_Text);
         TextView cn_lt_2_txt= findViewById(R.id.Cn_Light_2_Text);
@@ -165,34 +131,102 @@ public class Control extends AppCompatActivity {
         TextView cn_fan_3_txt= findViewById(R.id.Cn_Fan_3_Text);
         TextView cn_fan_4_txt= findViewById(R.id.Cn_Fan_4_Text);
 
-        SeekBar seekBar1 = findViewById(R.id.seekb_fan1);
-        SeekBar seekBar2 = findViewById(R.id.seekb_fan2);
-        SeekBar seekBar3 = findViewById(R.id.seekb_fan3);
-        SeekBar seekBar4 = findViewById(R.id.seekb_fan4);
-        
-        
-        sharedPreferences = getSharedPreferences("ControlPrefs", Context.MODE_PRIVATE);
+        SeekBar fan1SeekBar = findViewById(R.id.seekb_fan1);
+        SeekBar fan2SeekBar = findViewById(R.id.seekb_fan2);
+        SeekBar fan3SeekBar = findViewById(R.id.seekb_fan3);
+        SeekBar fan4SeekBar = findViewById(R.id.seekb_fan4);
 
-        progress1 = sharedPreferences.getInt("seekBar1_prog", 0);
-        progress2 = sharedPreferences.getInt("seekBar2_prog", 0);
-        progress3 = sharedPreferences.getInt("seekBar3_prog", 0);
-        progress4 = sharedPreferences.getInt("seekBar4_prog", 0);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        seekBar1.setProgress(progress1);
-        seekBar2.setProgress(progress2);
-        seekBar3.setProgress(progress3);
-        seekBar4.setProgress(progress4);
+        boolean isFan1On = sharedPreferences.getBoolean("isFan1On", false);
+        boolean isFan2On = sharedPreferences.getBoolean("isFan2On", false);
+        boolean isFan3On = sharedPreferences.getBoolean("isFan3On", false);
+        boolean isFan4On = sharedPreferences.getBoolean("isFan4On", false);
 
+        fan1Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFan1On", isChecked);
+            editor.apply();
+        });
+        fan2Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFan2On", isChecked);
+            editor.apply();
+        });
+        fan3Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFan3On", isChecked);
+            editor.apply();
+        });
+        fan4Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFan4On", isChecked);
+            editor.apply();
+        });
 
+        fan1Toggle.setChecked(isFan1On);
+        fan2Toggle.setChecked(isFan2On);
+        fan3Toggle.setChecked(isFan3On);
+        fan4Toggle.setChecked(isFan4On);
 
-        // Set listeners for the SeekBars
-        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        int fan1Progress = sharedPreferences.getInt("fan1Progress", 0);
+        int fan2Progress = sharedPreferences.getInt("fan2Progress", 0);
+        int fan3Progress = sharedPreferences.getInt("fan3Progress", 0);
+        int fan4Progress = sharedPreferences.getInt("fan4Progress", 0);
+
+        fan1SeekBar.setProgress(fan1Progress);
+        fan2SeekBar.setProgress(fan2Progress);
+        fan3SeekBar.setProgress(fan3Progress);
+        fan4SeekBar.setProgress(fan4Progress);
+
+        fan1SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress1 = progress;
-//                sendProgress(progress1);
-                saveProgress(seekBar, "seekBar1_prog");
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("fan1Progress", progress);
+                editor.apply();
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        fan2SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("fan2Progress", progress);
+                editor.apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        fan3SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("fan3Progress", progress);
+                editor.apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        fan4SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("fan4Progress", progress);
+                editor.apply();
             }
 
             @Override
@@ -202,53 +236,8 @@ public class Control extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                progress2 = progress;
-//                sendProgress(progress2);
-                saveProgress(seekBar, "seekBar2_prog");
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
-
-        seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress3 = progress;
-//                sendProgress(progress3);
-                saveProgress(seekBar, "seekBar3_prog");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
-
-        seekBar4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress4 = progress;
-//                sendProgress(progress4);
-                saveProgress(seekBar, "seekBar4_prog");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
 
     }
-
-
 
     private void saveColor(TextView textView, int colorResource) {
         Drawable[] drawables = textView.getCompoundDrawables();
@@ -275,18 +264,6 @@ public class Control extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }
-//    private void sendProgress(int progress) {
-//        // Send data to connected Bluetooth device
-//        String data = Integer.toString(progress);
-//        try {
-//            outputStream.write(data.getBytes());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-    private void saveProgress(SeekBar seekBar, String key) {
-        getPreferences(MODE_PRIVATE).edit().putInt(key, seekBar.getProgress()).apply();
     }
 
 }

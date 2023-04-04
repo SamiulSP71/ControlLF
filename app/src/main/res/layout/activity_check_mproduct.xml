@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckMProduct"
+    android:background="@color/gray">
+    <WebView
+        android:id="@+id/Chk_MPr_wv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="45dp"
+        />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="PrivateResource"
+
+        android:background="@drawable/nav_background"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+
+        app:itemIconTint="@color/nav_icon_text"
+        app:itemTextColor="@color/nav_icon_text"
+
+        app:menu="@menu/bottom_navigation_menu"/>
+
+
+</RelativeLayout>

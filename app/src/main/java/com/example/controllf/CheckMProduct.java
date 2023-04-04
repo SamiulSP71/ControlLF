@@ -14,13 +14,13 @@ import android.webkit.WebViewClient;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class CheckUpdate extends AppCompatActivity {
+public class CheckMProduct extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_update);
+        setContentView(R.layout.activity_check_mproduct);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.more);
@@ -49,8 +49,8 @@ public class CheckUpdate extends AppCompatActivity {
             }
         });
 
-        WebView webView = findViewById(R.id.Chk_update_wv);
-        String url = getIntent().getStringExtra("upUrl");
+        WebView webView = findViewById(R.id.Chk_MPr_wv);
+        String url = getIntent().getStringExtra("prUrl");
         webView.loadUrl(url);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -62,6 +62,4 @@ public class CheckUpdate extends AppCompatActivity {
             }
         });
     }
-
-
 }
