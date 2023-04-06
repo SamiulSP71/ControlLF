@@ -16,553 +16,582 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/mobile_background_blur" />
-
-        <TextView
-            android:id="@+id/controlLtText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_centerHorizontal="true"
-
-            android:layout_marginTop="30dp"
-            android:textColor="@color/white"
-            android:text="Control your all Lights from here"
-            />
-        <RelativeLayout
-            android:layout_below="@+id/controlLtText"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            tools:ignore="RtlSymmetry"
-            >
+            android:paddingBottom="20dp">
             <RelativeLayout
-                android:id="@+id/Cn_LightsPart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-
-
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                >
-
-
-                <RelativeLayout
-                    android:id="@+id/Cn_Light_Top_Part"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-
-                    >
-                    <RelativeLayout
-                        android:id="@+id/Cn_Light_1_Part"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-                        android:padding="10dp"
-                        >
-                        <TextView
-                            android:id="@+id/Cn_Light_1_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_centerHorizontal="true"
-
-                            app:drawableStartCompat="@drawable/light"
-                            android:drawablePadding="5dp"
-                            android:paddingEnd="2.5dp"
-
-                            android:gravity="center"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:text="Light 1"
-                            />
-                        <ToggleButton
-                            android:id="@+id/Cn_LtBtn1"
-                            android:layout_below="@id/Cn_Light_1_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:button="@color/transparent"
-                            android:background="@drawable/button_color"
-
-                            android:layout_marginTop="10dp"
-                            android:layout_centerHorizontal="true"
-
-                            android:textColor="@color/white"
-                            android:textOn="ON"
-                            android:textOff="OFF" />
-
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:id="@+id/Cn_Light_2_Part"
-                        android:layout_toEndOf="@id/Cn_Light_1_Part"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-                        android:padding="10dp"
-                        android:layout_marginStart="10dp"
-                        >
-                        <TextView
-                            android:id="@+id/Cn_Light_2_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_centerHorizontal="true"
-
-                            app:drawableStartCompat="@drawable/light"
-                            android:paddingEnd="2.5dp"
-                            android:gravity="center"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:text="Light 2"
-                            />
-                        <ToggleButton
-                            android:id="@+id/Cn_LtBtn2"
-                            android:layout_below="@id/Cn_Light_2_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:button="@color/transparent"
-                            android:background="@drawable/button_color"
-
-                            android:layout_marginTop="10dp"
-                            android:layout_centerHorizontal="true"
-
-                            android:textColor="@color/white"
-                            android:textOn="ON"
-                            android:textOff="OFF" />
-
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/Cn_Light_Bot_Part"
-                    android:layout_below="@id/Cn_Light_Top_Part"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/controlLtText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:text="Control your all Lights from here"
+                    />
+                <RelativeLayout
+                    android:layout_below="@+id/controlLtText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="RtlSymmetry"
                     >
                     <RelativeLayout
-                        android:id="@+id/Cn_Light_3_Part"
+                        android:id="@+id/Cn_LightsPart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-                        android:padding="10dp"
-                        >
-                        <TextView
-                            android:id="@+id/Cn_Light_3_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
 
-                            android:layout_centerHorizontal="true"
-
-                            app:drawableStartCompat="@drawable/light"
-                            android:gravity="center"
-                            android:drawablePadding="5dp"
-                            android:paddingEnd="2.5dp"
-
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:text="Light 3"
-                            />
-
-                        <ToggleButton
-                            android:id="@+id/Cn_LtBtn3"
-                            android:layout_below="@id/Cn_Light_3_Text"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:button="@color/transparent"
-                            android:background="@drawable/button_color"
-
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="10dp"
-
-                            android:textColor="@color/white"
-                            android:textOff="OFF"
-                            android:textOn="ON" />
-
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/Cn_Light_4_Part"
-                        android:layout_toEndOf="@id/Cn_Light_3_Part"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-                        android:padding="10dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         >
-                        <TextView
-                            android:id="@+id/Cn_Light_4_Text"
+
+
+                        <RelativeLayout
+                            android:id="@+id/Cn_Light_Top_Part"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            app:drawableStartCompat="@drawable/light"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:drawablePadding="5dp"
-                            android:paddingEnd="2.5dp"
 
 
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:text="Light 4"
-                            />
-                        <ToggleButton
-                            android:id="@+id/Cn_LtBtn4"
-                            android:layout_below="@id/Cn_Light_4_Text"
+                            >
+                            <RelativeLayout
+                                android:id="@+id/Cn_Light_1_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+                                android:padding="10dp"
+                                >
+                                <TextView
+                                    android:id="@+id/Cn_Light_1_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_centerHorizontal="true"
+
+                                    app:drawableStartCompat="@drawable/light"
+                                    android:drawablePadding="5dp"
+                                    android:paddingEnd="2.5dp"
+
+                                    android:gravity="center"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/white"
+                                    android:text="Light 1"
+                                    />
+                                <ToggleButton
+                                    android:id="@+id/Cn_LtBtn1"
+                                    android:layout_below="@id/Cn_Light_1_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:button="@color/transparent"
+                                    android:background="@drawable/button_color"
+
+                                    android:layout_marginTop="10dp"
+                                    android:layout_centerHorizontal="true"
+
+                                    android:textColor="@color/white"
+                                    android:textOn="ON"
+                                    android:textOff="OFF" />
+
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Light_2_Part"
+                                android:layout_toEndOf="@id/Cn_Light_1_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+                                android:padding="10dp"
+                                android:layout_marginStart="10dp"
+                                >
+                                <TextView
+                                    android:id="@+id/Cn_Light_2_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_centerHorizontal="true"
+
+                                    app:drawableStartCompat="@drawable/light"
+                                    android:paddingEnd="2.5dp"
+                                    android:gravity="center"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/white"
+                                    android:text="Light 2"
+                                    />
+                                <ToggleButton
+                                    android:id="@+id/Cn_LtBtn2"
+                                    android:layout_below="@id/Cn_Light_2_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:button="@color/transparent"
+                                    android:background="@drawable/button_color"
+
+                                    android:layout_marginTop="10dp"
+                                    android:layout_centerHorizontal="true"
+
+                                    android:textColor="@color/white"
+                                    android:textOn="ON"
+                                    android:textOff="OFF" />
+
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/Cn_Lights_Bot_Part"
+                            android:layout_below="@id/Cn_Light_Top_Part"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:background="@drawable/button_color" android:button="@color/transparent"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
 
-                            android:textColor="@color/white"
-                            android:textOn="ON"
-                            android:textOff="OFF" />
+                            >
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Light_3_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+                                android:padding="10dp"
+                                >
+                                <TextView
+                                    android:id="@+id/Cn_Light_3_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
 
+                                    android:layout_centerHorizontal="true"
+
+                                    app:drawableStartCompat="@drawable/light"
+                                    android:gravity="center"
+                                    android:drawablePadding="5dp"
+                                    android:paddingEnd="2.5dp"
+
+                                    android:textSize="18sp"
+                                    android:textColor="@color/white"
+                                    android:text="Light 3"
+                                    />
+
+                                <ToggleButton
+                                    android:id="@+id/Cn_LtBtn3"
+                                    android:layout_below="@id/Cn_Light_3_Text"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:button="@color/transparent"
+                                    android:background="@drawable/button_color"
+
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+
+                                    android:textColor="@color/white"
+                                    android:textOff="OFF"
+                                    android:textOn="ON" />
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Light_4_Part"
+                                android:layout_toEndOf="@id/Cn_Light_3_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+                                android:padding="10dp"
+                                android:layout_marginStart="10dp"
+                                >
+                                <TextView
+                                    android:id="@+id/Cn_Light_4_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    app:drawableStartCompat="@drawable/light"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="center"
+                                    android:drawablePadding="5dp"
+                                    android:paddingEnd="2.5dp"
+
+
+                                    android:textSize="18sp"
+                                    android:textColor="@color/white"
+                                    android:text="Light 4"
+                                    />
+                                <ToggleButton
+                                    android:id="@+id/Cn_LtBtn4"
+                                    android:layout_below="@id/Cn_Light_4_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:background="@drawable/button_color"
+                                    android:button="@color/transparent"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+
+                                    android:textColor="@color/white"
+                                    android:textOn="ON"
+                                    android:textOff="OFF" />
+
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/controlFanText"
+                        android:layout_below="@id/Cn_LightsPart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerHorizontal="true"
+                        android:paddingStart="40dp"
+                        android:paddingEnd="40dp"
+
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textAlignment="center"
+                        android:text="Control your all Fans and their Speed from here."
+                        />
+
+                    <TextView
+                        android:id="@+id/fanNote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/controlFanText"
+
+                        android:layout_centerHorizontal="true"
+
+                        android:layout_marginTop="5dp"
+                        android:paddingStart="40dp"
+                        android:paddingEnd="40dp"
+                        android:text="Note: You can't change fan speed until you turn on the fan."
+                        android:textAlignment="center"
+                        android:textColor="@color/tp_txt" />
+                    <RelativeLayout
+                        android:id="@+id/Cn_FansPart"
+                        android:layout_below="@+id/fanNote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        >
+
+
+                        <RelativeLayout
+                            android:id="@+id/Cn_Fans_Top_Part"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            >
+                            <RelativeLayout
+                                android:id="@+id/Cn_Fan_1_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+
+                                >
+                                <RelativeLayout
+                                    android:id="@+id/Cn_Fan1_Top"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:id="@+id/Cn_Fan_1_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+
+                                        app:drawableStartCompat="@drawable/fan"
+                                        android:drawablePadding="5dp"
+                                        android:paddingEnd="2.5dp"
+
+                                        android:gravity="center"
+                                        android:textSize="18sp"
+                                        android:textColor="@color/white"
+                                        android:text="Fan 1"
+                                        />
+                                    <ToggleButton
+                                        android:id="@+id/Cn_FanBtn1"
+                                        android:layout_below="@id/Cn_Fan_1_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:button="@color/transparent"
+                                        android:background="@drawable/button_color"
+
+                                        android:layout_marginTop="10dp"
+                                        android:layout_centerHorizontal="true"
+
+                                        android:textColor="@color/white"
+                                        android:textOn="ON"
+                                        android:textOff="OFF" />
+                                </RelativeLayout>
+                                <SeekBar
+                                    android:id="@+id/seekb_fan1"
+                                    android:layout_width="150dp"
+                                    android:layout_height="24dp"
+                                    android:layout_below="@id/Cn_Fan1_Top"
+
+                                    android:layout_marginBottom="10dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:max="10"
+                                    android:thumbTint="@color/white"
+                                    android:thumb="@drawable/speed"
+                                    android:progressDrawable="@drawable/seekbarbg"
+                                    android:splitTrack="false"
+                                    />
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Fan_2_Part"
+                                android:layout_toEndOf="@+id/Cn_Fan_1_Part"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+
+                                android:layout_marginStart="10dp"
+                                >
+                                <RelativeLayout
+                                    android:id="@+id/Cn_Fan2_Top"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:id="@+id/Cn_Fan_2_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+
+                                        app:drawableStartCompat="@drawable/fan"
+                                        android:drawablePadding="5dp"
+                                        android:paddingEnd="2.5dp"
+
+                                        android:gravity="center"
+                                        android:textSize="18sp"
+                                        android:textColor="@color/white"
+                                        android:text="Fan 2"
+                                        />
+                                    <ToggleButton
+                                        android:id="@+id/Cn_FanBtn2"
+                                        android:layout_below="@id/Cn_Fan_2_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:button="@color/transparent"
+                                        android:background="@drawable/button_color"
+
+                                        android:layout_marginTop="10dp"
+                                        android:layout_centerHorizontal="true"
+
+                                        android:textColor="@color/white"
+                                        android:textOn="ON"
+                                        android:textOff="OFF" />
+                                </RelativeLayout>
+                                <SeekBar
+                                    android:id="@+id/seekb_fan2"
+                                    android:layout_width="150dp"
+                                    android:layout_height="24dp"
+                                    android:layout_below="@id/Cn_Fan2_Top"
+
+                                    android:layout_marginBottom="10dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+
+                                    android:max="10"
+                                    android:thumbTint="@color/white"
+                                    android:thumb="@drawable/speed"
+                                    android:progressDrawable="@drawable/seekbarbg"
+                                    android:splitTrack="false"
+                                    />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/Cn_Fans_Bot_Part"
+                            android:layout_below="@id/Cn_Fans_Top_Part"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            >
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Fan_3_Part"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+
+                                >
+                                <RelativeLayout
+                                    android:id="@+id/Cn_Fan3_Top"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:id="@+id/Cn_Fan_3_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+
+                                        app:drawableStartCompat="@drawable/fan"
+                                        android:drawablePadding="5dp"
+                                        android:paddingEnd="2.5dp"
+
+                                        android:gravity="center"
+                                        android:textSize="18sp"
+                                        android:textColor="@color/white"
+                                        android:text="Fan 3"
+                                        />
+                                    <ToggleButton
+                                        android:id="@+id/Cn_FanBtn3"
+                                        android:layout_below="@id/Cn_Fan_3_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:button="@color/transparent"
+                                        android:background="@drawable/button_color"
+
+                                        android:layout_marginTop="10dp"
+                                        android:layout_centerHorizontal="true"
+
+                                        android:textColor="@color/white"
+                                        android:textOn="ON"
+                                        android:textOff="OFF" />
+                                </RelativeLayout>
+                                <SeekBar
+                                    android:id="@+id/seekb_fan3"
+                                    android:layout_width="150dp"
+                                    android:layout_height="24dp"
+                                    android:layout_below="@id/Cn_Fan3_Top"
+
+                                    android:layout_marginBottom="10dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:max="10"
+                                    android:thumbTint="@color/white"
+                                    android:thumb="@drawable/speed"
+                                    android:progressDrawable="@drawable/seekbarbg"
+                                    android:splitTrack="false"
+                                    />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Fan_4_Part"
+                                android:layout_toEndOf="@+id/Cn_Fan_3_Part"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+
+                                android:layout_marginStart="10dp"
+                                >
+                                <RelativeLayout
+                                    android:id="@+id/Cn_Fan4_Top"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:id="@+id/Cn_Fan_4_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:layout_centerHorizontal="true"
+
+                                        app:drawableStartCompat="@drawable/fan"
+                                        android:drawablePadding="5dp"
+                                        android:paddingEnd="2.5dp"
+
+                                        android:gravity="center"
+                                        android:textSize="18sp"
+                                        android:textColor="@color/white"
+                                        android:text="Fan 4"
+                                        />
+                                    <ToggleButton
+                                        android:id="@+id/Cn_FanBtn4"
+                                        android:layout_below="@id/Cn_Fan_4_Text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:button="@color/transparent"
+                                        android:background="@drawable/button_color"
+
+                                        android:layout_marginTop="10dp"
+                                        android:layout_centerHorizontal="true"
+
+                                        android:textColor="@color/white"
+                                        android:textOn="ON"
+                                        android:textOff="OFF" />
+                                </RelativeLayout>
+                                <SeekBar
+                                    android:id="@+id/seekb_fan4"
+                                    android:layout_width="150dp"
+                                    android:layout_height="24dp"
+                                    android:layout_below="@id/Cn_Fan4_Top"
+
+                                    android:layout_marginBottom="10dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:max="10"
+                                    android:thumbTint="@color/white"
+                                    android:thumb="@drawable/speed"
+                                    android:progressDrawable="@drawable/seekbarbg"
+                                    android:splitTrack="false"
+                                    />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
 
                     </RelativeLayout>
 
 
                 </RelativeLayout>
             </RelativeLayout>
-            <TextView
-                android:id="@+id/controlFanText"
-                android:layout_below="@+id/Cn_LightsPart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
 
-                android:layout_centerHorizontal="true"
 
-                android:layout_marginTop="30dp"
-                android:textColor="@color/white"
-                android:text="Control your all Fans and their Speed from here"
-                />
-            <RelativeLayout
-                android:id="@+id/Cn_FansPart"
-                android:layout_below="@+id/controlFanText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
 
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                >
-
-
-                <RelativeLayout
-                    android:id="@+id/Cn_Fans_Top_Part"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    >
-                    <RelativeLayout
-                        android:id="@+id/Cn_Fan_1_Part"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-
-                        >
-                        <RelativeLayout
-                            android:id="@+id/Cn_Fan1_Top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:padding="10dp">
-
-                        <TextView
-                            android:id="@+id/Cn_Fan_1_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_centerHorizontal="true"
-
-                            app:drawableStartCompat="@drawable/fan"
-                            android:drawablePadding="5dp"
-                            android:paddingEnd="2.5dp"
-
-                            android:gravity="center"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:text="Fan 1"
-                            />
-                        <ToggleButton
-                            android:id="@+id/Cn_FanBtn1"
-                            android:layout_below="@id/Cn_Fan_1_Text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:button="@color/transparent"
-                            android:background="@drawable/button_color"
-
-                            android:layout_marginTop="10dp"
-                            android:layout_centerHorizontal="true"
-
-                            android:textColor="@color/white"
-                            android:textOn="ON"
-                            android:textOff="OFF" />
-                        </RelativeLayout>
-                        <SeekBar
-                            android:id="@+id/seekb_fan1"
-                            android:layout_width="150dp"
-                            android:layout_height="24dp"
-                            android:layout_below="@id/Cn_Fan1_Top"
-
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:max="10"
-                            android:thumbTint="@color/white"
-                            android:thumb="@drawable/speed"
-                            android:progressDrawable="@drawable/seekbarbg"
-                            android:splitTrack="false"
-                            />
-
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/Cn_Fan_2_Part"
-                        android:layout_toEndOf="@+id/Cn_Fan_1_Part"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-
-                        android:layout_marginStart="10dp"
-                        >
-                        <RelativeLayout
-                            android:id="@+id/Cn_Fan2_Top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:id="@+id/Cn_Fan_2_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_centerHorizontal="true"
-
-                                app:drawableStartCompat="@drawable/fan"
-                                android:drawablePadding="5dp"
-                                android:paddingEnd="2.5dp"
-
-                                android:gravity="center"
-                                android:textSize="18sp"
-                                android:textColor="@color/white"
-                                android:text="Fan 2"
-                                />
-                            <ToggleButton
-                                android:id="@+id/Cn_FanBtn2"
-                                android:layout_below="@id/Cn_Fan_2_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:button="@color/transparent"
-                                android:background="@drawable/button_color"
-
-                                android:layout_marginTop="10dp"
-                                android:layout_centerHorizontal="true"
-
-                                android:textColor="@color/white"
-                                android:textOn="ON"
-                                android:textOff="OFF" />
-                        </RelativeLayout>
-                        <SeekBar
-                            android:id="@+id/seekb_fan2"
-                            android:layout_width="150dp"
-                            android:layout_height="24dp"
-                            android:layout_below="@id/Cn_Fan2_Top"
-
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-
-                            android:max="10"
-                            android:thumbTint="@color/white"
-                            android:thumb="@drawable/speed"
-                            android:progressDrawable="@drawable/seekbarbg"
-                            android:splitTrack="false"
-                            />
-
-
-                    </RelativeLayout>
-
-
-
-
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/Cn_Fans_Bot_Part"
-                    android:layout_below="@id/Cn_Fans_Top_Part"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="10dp"
-                    >
-                    <RelativeLayout
-                        android:id="@+id/Cn_Fan_3_Part"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-
-                        >
-                        <RelativeLayout
-                            android:id="@+id/Cn_Fan3_Top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:id="@+id/Cn_Fan_3_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_centerHorizontal="true"
-
-                                app:drawableStartCompat="@drawable/fan"
-                                android:drawablePadding="5dp"
-                                android:paddingEnd="2.5dp"
-
-                                android:gravity="center"
-                                android:textSize="18sp"
-                                android:textColor="@color/white"
-                                android:text="Fan 3"
-                                />
-                            <ToggleButton
-                                android:id="@+id/Cn_FanBtn3"
-                                android:layout_below="@id/Cn_Fan_3_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:button="@color/transparent"
-                                android:background="@drawable/button_color"
-
-                                android:layout_marginTop="10dp"
-                                android:layout_centerHorizontal="true"
-
-                                android:textColor="@color/white"
-                                android:textOn="ON"
-                                android:textOff="OFF" />
-                        </RelativeLayout>
-                        <SeekBar
-                            android:id="@+id/seekb_fan3"
-                            android:layout_width="150dp"
-                            android:layout_height="24dp"
-                            android:layout_below="@id/Cn_Fan3_Top"
-
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:max="10"
-                            android:thumbTint="@color/white"
-                            android:thumb="@drawable/speed"
-                            android:progressDrawable="@drawable/seekbarbg"
-                            android:splitTrack="false"
-                            />
-
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/Cn_Fan_4_Part"
-                        android:layout_toEndOf="@+id/Cn_Fan_3_Part"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transparent_bg"
-
-                        android:layout_marginStart="10dp"
-                        >
-                        <RelativeLayout
-                            android:id="@+id/Cn_Fan4_Top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:id="@+id/Cn_Fan_4_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_centerHorizontal="true"
-
-                                app:drawableStartCompat="@drawable/fan"
-                                android:drawablePadding="5dp"
-                                android:paddingEnd="2.5dp"
-
-                                android:gravity="center"
-                                android:textSize="18sp"
-                                android:textColor="@color/white"
-                                android:text="Fan 4"
-                                />
-                            <ToggleButton
-                                android:id="@+id/Cn_FanBtn4"
-                                android:layout_below="@id/Cn_Fan_4_Text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:button="@color/transparent"
-                                android:background="@drawable/button_color"
-
-                                android:layout_marginTop="10dp"
-                                android:layout_centerHorizontal="true"
-
-                                android:textColor="@color/white"
-                                android:textOn="ON"
-                                android:textOff="OFF" />
-                        </RelativeLayout>
-                        <SeekBar
-                            android:id="@+id/seekb_fan4"
-                            android:layout_width="150dp"
-                            android:layout_height="24dp"
-                            android:layout_below="@id/Cn_Fan4_Top"
-
-                            android:layout_marginBottom="10dp"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:max="10"
-                            android:thumbTint="@color/white"
-                            android:thumb="@drawable/speed"
-                            android:progressDrawable="@drawable/seekbarbg"
-                            android:splitTrack="false"
-                            />
-
-
-                    </RelativeLayout>
-
-
-
-
-
-                </RelativeLayout>
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-
+        </ScrollView>
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
