@@ -258,7 +258,6 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_1_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-            fan1SeekBar.setEnabled(isChecked); // enable or disable seekbar based on toggle button state
 
         });
         fan2Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -267,7 +266,7 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_2_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-            fan2SeekBar.setEnabled(isChecked);
+
 
 
         });
@@ -277,7 +276,7 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_3_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-            fan3SeekBar.setEnabled(isChecked);
+
 
 
         });
@@ -287,31 +286,10 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_4_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-            fan4SeekBar.setEnabled(isChecked);
+
 
         });
 
-        if (isFan1On) {
-            fan1SeekBar.setEnabled(true); // enable seekbar when toggle button is ON
-        } else {
-            fan1SeekBar.setEnabled(false);// disable seekbar when toggle button is OFF
-
-        }
-        if (isFan2On) {
-            fan2SeekBar.setEnabled(true); // enable seekbar when toggle button is ON
-        } else {
-            fan2SeekBar.setEnabled(false); // disable seekbar when toggle button is OFF
-        }
-        if (isFan3On) {
-            fan3SeekBar.setEnabled(true); // enable seekbar when toggle button is ON
-        } else {
-            fan3SeekBar.setEnabled(false); // disable seekbar when toggle button is OFF
-        }
-        if (isFan4On) {
-            fan4SeekBar.setEnabled(true); // enable seekbar when toggle button is ON
-        } else {
-            fan4SeekBar.setEnabled(false); // disable seekbar when toggle button is OFF
-        }
 
         fan1SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

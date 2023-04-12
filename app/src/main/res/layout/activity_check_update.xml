@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CheckUpdate"
-    android:background="@color/gray">
+    android:background="@color/updatebg">
 
     <RelativeLayout
         android:id="@+id/updatetxt"

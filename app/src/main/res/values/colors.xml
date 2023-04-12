@@ -12,7 +12,7 @@
     <color name="transparent">#00000000</color>
     <color name="transparent_bg">#804E649E</color>
     <color name="textbg">#80031027</color>
-    <color name="tr_bg_str">#990A1A37</color>
+    <color name="tr_bg_str">#E6010E23</color>
     <color name="tp_txt">#997B94DA</color>
 
     <color name="nav_bg">#122D50</color>
@@ -23,11 +23,11 @@
     <!--    Button Color-->
     <color name="button_clr_st">#80599AEA</color>
     <color name="button_clr">#9910396A</color>
-    <color name="button_str">#99001339</color>
+    <color name="button_str">#99021122</color>
 
-    <color name="button_clr_st_chk">#99104F87</color>
-    <color name="button_clr_chk">#B33988FF</color>
-    <color name="button_str_chk">#B30074DA</color>
+    <color name="button_clr_st_chk">#9910396A</color>
+    <color name="button_clr_chk">#80599AEA</color>
+    <color name="button_str_chk">#808AAEDA</color>
     <!--    Button Color-->
     <color name="bgcolorst">#0F0947</color>
     <color name="bgcolorcn">#116F95</color>
@@ -40,8 +40,7 @@
 
     <color name="morebg">#80031027</color>
     <color name="morebg_chk">#800E254E</color>
-
-
+    <color name="updatebg">#25303C</color>
 
 
 </resources>

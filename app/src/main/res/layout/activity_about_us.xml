@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUs">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mobile_background_blur" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:layout_centerInParent="true"
+
+            >
+            <RelativeLayout
+                android:id="@+id/SamiulPart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="@drawable/textbackground"
+                >
+
+                <TextView
+                    android:id="@+id/SName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:text="Samiul Siddique Pias"
+                    />
+                <TextView
+                    android:id="@+id/Sid"
+                    android:layout_below="@id/SName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:text="App Developer and Founder of SamToy"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@id/SamiulPart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:background="@drawable/textbackground"
+                >
+
+                <TextView
+                    android:id="@+id/PName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:text="Muntasir Maruf Prottoy"
+                    />
+                <TextView
+                    android:id="@+id/Pid"
+                    android:layout_below="@id/PName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:text="Co-Founder of SamToy"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            tools:ignore="PrivateResource"
+
+            android:background="@drawable/nav_background"
+            android:layout_alignParentBottom="true"
+            android:padding="5dp"
+
+            app:itemIconTint="@color/nav_icon_text"
+            app:itemTextColor="@color/nav_icon_text"
+
+            app:menu="@menu/bottom_navigation_menu"/>
+
+</RelativeLayout>

@@ -16,13 +16,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class More extends AppCompatActivity {
-BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.more);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -46,17 +46,23 @@ BottomNavigationView bottomNavigationView;
             }
         });
 
+        TextView aboutUs = findViewById(R.id.about);
+        aboutUs.setOnClickListener(v -> {
+            Intent intent = new Intent(More.this, AboutUs.class);
+            startActivity(intent);
+        });
+
         TextView chkupdate = findViewById(R.id.update);
         chkupdate.setOnClickListener(v -> {
             Intent intent = new Intent(More.this, CheckUpdate.class);
-            intent.putExtra("upUrl", "https://tinyurl.com/yc5x7e7c");
+            intent.putExtra("upUrl", "https://samtoyet.blogspot.com/2023/03/samtoy-android-app.html");
             startActivity(intent);
         });
 
         TextView chkmproducts = findViewById(R.id.checkpd);
         chkmproducts.setOnClickListener(v -> {
             Intent intent = new Intent(More.this, CheckMProduct.class);
-            intent.putExtra("prUrl", "https://www.google.com");
+            intent.putExtra("prUrl", "https://samtoyet.blogspot.com/index.html");
             startActivity(intent);
         });
 

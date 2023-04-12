@@ -270,23 +270,9 @@
                         android:text="Control your all Fans and their Speed from here."
                         />
 
-                    <TextView
-                        android:id="@+id/fanNote"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/controlFanText"
-
-                        android:layout_centerHorizontal="true"
-
-                        android:layout_marginTop="5dp"
-                        android:paddingStart="40dp"
-                        android:paddingEnd="40dp"
-                        android:text="Note: You can't change fan speed until you turn on the fan."
-                        android:textAlignment="center"
-                        android:textColor="@color/tp_txt" />
                     <RelativeLayout
                         android:id="@+id/Cn_FansPart"
-                        android:layout_below="@+id/fanNote"
+                        android:layout_below="@+id/controlFanText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
