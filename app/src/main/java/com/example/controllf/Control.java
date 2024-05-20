@@ -1,49 +1,50 @@
 package com.example.controllf;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+
+import android.content.pm.PackageManager;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothProfile;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
 import java.io.OutputStream;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
 
 public class Control extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    BluetoothSocket bluetoothSocket;
-    BluetoothAdapter bluetoothAdapter;
-    BluetoothSocket socket;
-    OutputStream outputStream;
-    private SharedPreferences sharedPreferences;
+    private BluetoothAdapter bluetoothAdapter;
+    private TextView btnConnect;
+
+    private static final String TAG = "Control";
+    private static final int REQUEST_BLUETOOTH_PERMISSIONS = 1;
+    private static final String DEVICE_NAME = "HC-05";
+    private BluetoothSocket bluetoothSocket;
+    private OutputStream outputStream;
+    private BluetoothDevice hc05Device;
+
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,10 @@ public class Control extends AppCompatActivity {
         RelativeLayout fanBotPart = findViewById(R.id.Cn_Fans_Bot_Part);
         RelativeLayout fan3Part = findViewById(R.id.Cn_Fan_3_Part);
         RelativeLayout fan4Part = findViewById(R.id.Cn_Fan_4_Part);
+
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        btnConnect = findViewById(R.id.BtnConnect);
+        btnConnect.setOnClickListener(v -> connectToHC05());
 
         // Load the saved preferences for each group
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -145,15 +150,15 @@ public class Control extends AppCompatActivity {
         }
 
         // Set class for drawables from text view of lights and fans
-        TextView cn_lt_1_txt= findViewById(R.id.Cn_Light_1_Text);
-        TextView cn_lt_2_txt= findViewById(R.id.Cn_Light_2_Text);
-        TextView cn_lt_3_txt= findViewById(R.id.Cn_Light_3_Text);
-        TextView cn_lt_4_txt= findViewById(R.id.Cn_Light_4_Text);
+        TextView cn_lt_1_txt = findViewById(R.id.Cn_Light_1_Text);
+        TextView cn_lt_2_txt = findViewById(R.id.Cn_Light_2_Text);
+        TextView cn_lt_3_txt = findViewById(R.id.Cn_Light_3_Text);
+        TextView cn_lt_4_txt = findViewById(R.id.Cn_Light_4_Text);
 
-        TextView cn_fan_1_txt= findViewById(R.id.Cn_Fan_1_Text);
-        TextView cn_fan_2_txt= findViewById(R.id.Cn_Fan_2_Text);
-        TextView cn_fan_3_txt= findViewById(R.id.Cn_Fan_3_Text);
-        TextView cn_fan_4_txt= findViewById(R.id.Cn_Fan_4_Text);
+        TextView cn_fan_1_txt = findViewById(R.id.Cn_Fan_1_Text);
+        TextView cn_fan_2_txt = findViewById(R.id.Cn_Fan_2_Text);
+        TextView cn_fan_3_txt = findViewById(R.id.Cn_Fan_3_Text);
+        TextView cn_fan_4_txt = findViewById(R.id.Cn_Fan_4_Text);
 
         // Set class for lights and fans toggle buttons
         ToggleButton lt1Toggle = findViewById(R.id.Cn_LtBtn1);
@@ -205,6 +210,7 @@ public class Control extends AppCompatActivity {
         fan3SeekBar.setProgress(fan3Progress);
         fan4SeekBar.setProgress(fan4Progress);
 
+
         cn_lt_1_txt.setCompoundDrawablesWithIntrinsicBounds(isLt1On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
         cn_lt_2_txt.setCompoundDrawablesWithIntrinsicBounds(isLt2On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
         cn_lt_3_txt.setCompoundDrawablesWithIntrinsicBounds(isLt3On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
@@ -222,6 +228,9 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_lt_1_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
                     0, 0, 0);
+            String message1 = isChecked ? "AA1" : "AA2";
+            sendBluetoothData(message1);
+
 
         });
         lt2Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -268,7 +277,6 @@ public class Control extends AppCompatActivity {
                     0, 0, 0);
 
 
-
         });
         fan3Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -276,7 +284,6 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_3_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-
 
 
         });
@@ -290,7 +297,6 @@ public class Control extends AppCompatActivity {
 
         });
 
-
         fan1SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -301,10 +307,12 @@ public class Control extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         fan2SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -315,10 +323,12 @@ public class Control extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         fan3SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -329,10 +339,12 @@ public class Control extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         fan4SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -343,31 +355,121 @@ public class Control extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
+
 
     }
 
-    @SuppressLint("MissingPermission")
-    private void sendData(String data) {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter == null) {
-            // Device does not support Bluetooth
+    private void connectToHC05() {
+        if (!hasBluetoothPermissions()) {
+            requestBluetoothPermissions();
             return;
         }
 
-        for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
-            try (BluetoothSocket socket = device.createRfcommSocketToServiceRecord(UUID.randomUUID())) {
-                socket.connect();
-                socket.getOutputStream().write(data.getBytes());
-            } catch (IOException e) {
-                // Error occurred while sending data
-                e.printStackTrace();
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
+
+        if (pairedDevices != null && !pairedDevices.isEmpty()) {
+            for (BluetoothDevice device : pairedDevices) {
+                if (DEVICE_NAME.equals(device.getName())) {
+                    hc05Device = device;
+                    break;
+                }
             }
+        }
+
+        if (hc05Device != null) {
+            new Thread(() -> {
+                try {
+                    bluetoothSocket = createBluetoothSocket(hc05Device);
+                    bluetoothSocket.connect();
+                    outputStream = bluetoothSocket.getOutputStream();
+                    runOnUiThread(() -> btnConnect.setText("Connected to HC-05"));
+                } catch (IOException e) {
+                    runOnUiThread(() -> btnConnect.setText("Not Connected"));
+                    e.printStackTrace();
+                }
+            }).start();
+        } else {
+            runOnUiThread(() -> btnConnect.setText("Not Connected"));
         }
     }
 
+    private boolean hasBluetoothPermissions() {
+        return ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestBluetoothPermissions() {
+        ActivityCompat.requestPermissions(this,
+                new String[]{android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH_SCAN},
+                REQUEST_BLUETOOTH_PERMISSIONS);
+    }
+
+    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
+        try {
+            Method m = device.getClass().getMethod("createRfcommSocket", int.class);
+            return (BluetoothSocket) m.invoke(device, 1);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+            throw new IOException("Could not create RFComm socket", e);
+        }
+    }
+
+    private void sendBluetoothData(String data) {
+        if (outputStream != null) {
+            try {
+                outputStream.write(data.getBytes());
+                Log.d(TAG, "Data sent: " + data);
+            } catch (IOException e) {
+                Log.e(TAG, "Error sending data", e);
+            }
+        } else {
+            Log.e(TAG, "Output stream is null, cannot send data");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            if (outputStream != null) {
+                outputStream.close();
+            }
+            if (bluetoothSocket != null) {
+                bluetoothSocket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_BLUETOOTH_PERMISSIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permissions granted, set up Bluetooth
+                connectToHC05();
+            } else {
+                // Permissions denied, show a message to the user
+                Toast.makeText(this, "Bluetooth permissions are required to use this app", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }
