@@ -18,6 +18,10 @@
             android:scaleType="centerCrop"
             android:src="@drawable/mobile_background_blur" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="17dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -41,7 +45,6 @@
 
                     android:layout_centerInParent="true"
 
-                    android:layout_marginTop="50dp"
                     android:text="Setup Your Room Here"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
@@ -208,6 +211,7 @@
                         android:layout_marginTop="20dp"
                         android:background="@color/ltgray"
                         />
+
                     <RelativeLayout
                         android:id="@+id/FanPart"
                         android:layout_below="@id/partline"
@@ -388,6 +392,7 @@
 
             </RelativeLayout>
 
+        </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>

@@ -27,7 +27,7 @@
 
     <color name="button_clr_st_chk">#9910396A</color>
     <color name="button_clr_chk">#80599AEA</color>
-    <color name="button_str_chk">#808AAEDA</color>
+    <color name="button_str_chk">#80EEF6FF</color>
     <!--    Button Color-->
     <color name="bgcolorst">#0F0947</color>
     <color name="bgcolorcn">#116F95</color>

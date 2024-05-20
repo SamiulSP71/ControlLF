@@ -7,8 +7,7 @@
                 android:centerColor="@color/button_clr"
                 android:endColor="@color/button_clr_st"
                 />
-            <corners android:topRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
+            <corners android:radius="10dp"
                 />
             <stroke android:color="@color/button_str"
                 android:width="1.5dp"/>
@@ -21,8 +20,7 @@
                 android:centerColor="@color/button_clr_chk"
                 android:endColor="@color/button_clr_st_chk"
                 />
-            <corners android:topRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
+            <corners android:radius="10dp"
                 />
             <stroke android:color="@color/button_str_chk"
                 android:width="1.5dp"/>

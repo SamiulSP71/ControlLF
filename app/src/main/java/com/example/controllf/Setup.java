@@ -49,7 +49,6 @@ public class Setup extends AppCompatActivity {
         });
 
         // Find the radio groups in the layout
-
         RadioGroup ltGroup = findViewById(R.id.LtGroup);
         RadioGroup fanGroup = findViewById(R.id.FanGroup);
 
@@ -67,67 +66,7 @@ public class Setup extends AppCompatActivity {
             // Save the preferences for this group
             savePreferences(group, "FanGroupPref");
         });
-        updateConnectBtnText();
-        TextView connectbtn = findViewById(R.id.connectButton);
-        connectbtn.setOnClickListener(v ->{
-            BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            if (bluetoothAdapter == null) {
-                connectbtn.setText("Bluetooth is not supported");
-            } else if (!bluetoothAdapter.isEnabled()) {
-                connectbtn.setText("Turn On Bluetooth Connection");
-            } else {
-                BluetoothDevice connectedDevice = getConnectedDevice(bluetoothAdapter);
-                if (connectedDevice == null) {
-                    connectbtn.setText("No Connected Devices");
-                } else {
-                    @SuppressLint("MissingPermission") String deviceName = connectedDevice.getName();
-                    if (deviceName == null) {
-                        deviceName = "Connected an Unknown Named Device";
-                    }
-                    connectbtn.setText("Connected to: " + deviceName);
-                }
-            }
-        });
-    }
-    public void updateConnectBtnText() {
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        TextView connectbtn = findViewById(R.id.connectButton);
-        if (bluetoothAdapter == null) {
-            connectbtn.setText("Bluetooth is not supported");
-        } else if (!bluetoothAdapter.isEnabled()) {
-            connectbtn.setText("Turn On Bluetooth Connection");
-        } else {
-            BluetoothDevice connectedDevice = getConnectedDevice(bluetoothAdapter);
-            if (connectedDevice == null) {
-                connectbtn.setText("No Connected Devices");
-            } else {
-                @SuppressLint("MissingPermission") String deviceName = connectedDevice.getName();
-                if (deviceName == null) {
-                    deviceName = "Connected an Unknown Named Device";
-                }
-                connectbtn.setText("Connected to: " + deviceName);
-            }
-        }
-    }
-    @SuppressLint("MissingPermission")
-    private BluetoothDevice getConnectedDevice(BluetoothAdapter bluetoothAdapter) {
-        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-        for (BluetoothDevice device : pairedDevices) {
-            if (device.getBondState() == BluetoothDevice.BOND_BONDED && isDeviceConnected(device)) {
-                return device;
-            }
-        }
-        return null;
-    }
-    private boolean isDeviceConnected(BluetoothDevice device) {
-        try {
-            Method isConnectedMethod = BluetoothDevice.class.getDeclaredMethod("isConnected");
-            isConnectedMethod.setAccessible(true);
-            return (boolean) isConnectedMethod.invoke(device);
-        } catch (Exception e) {
-            // Handle any exceptions here
-        }
-        return false;
+
     }
     // Helper method to load saved preferences for a given group
     private void loadPreferences(RadioGroup group, String prefString) {
