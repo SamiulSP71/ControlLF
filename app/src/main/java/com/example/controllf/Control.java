@@ -2,8 +2,10 @@ package com.example.controllf;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -11,9 +13,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -73,15 +77,16 @@ public class Control extends AppCompatActivity {
 
         RelativeLayout light1Part = findViewById(R.id.Cn_Light_1_Part);
         RelativeLayout light2Part = findViewById(R.id.Cn_Light_2_Part);
-        RelativeLayout lightBotPart = findViewById(R.id.Cn_Lights_Bot_Part);
         RelativeLayout light3Part = findViewById(R.id.Cn_Light_3_Part);
         RelativeLayout light4Part = findViewById(R.id.Cn_Light_4_Part);
+        RelativeLayout light5Part = findViewById(R.id.Cn_Light_5_Part);
+        RelativeLayout light6Part = findViewById(R.id.Cn_Light_6_Part);
 
         RelativeLayout fan1Part = findViewById(R.id.Cn_Fan_1_Part);
         RelativeLayout fan2Part = findViewById(R.id.Cn_Fan_2_Part);
-        RelativeLayout fanBotPart = findViewById(R.id.Cn_Fans_Bot_Part);
         RelativeLayout fan3Part = findViewById(R.id.Cn_Fan_3_Part);
         RelativeLayout fan4Part = findViewById(R.id.Cn_Fan_4_Part);
+        RelativeLayout fan5Part = findViewById(R.id.Cn_Fan_5_Part);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         btnConnect = findViewById(R.id.BtnConnect);
@@ -89,93 +94,55 @@ public class Control extends AppCompatActivity {
 
         // Load the saved preferences for each group
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        String ltPref = prefs.getString("LtGroupPref", "");
-        String fanPref = prefs.getString("FanGroupPref", "");
+        int ltPrefIndex = prefs.getInt("LtGroupPref", -1);
+        int fanPrefIndex = prefs.getInt("FanGroupPref", -1);
 
-        // Show or hide the buttons based on saved value from setup
-        if (!ltPref.isEmpty()) {
-            String[] ltIds = ltPref.split(",");
-            for (String idStr : ltIds) {
-                int id = Integer.parseInt(idStr);
-                if (id == R.id.LtBtn1) {
-                    light1Part.setVisibility(View.VISIBLE);
-                    light2Part.setVisibility(View.GONE);
-                    lightBotPart.setVisibility(View.GONE);
+        // Show or hide the views based on saved value from setup
+        adjustLightVisibility(ltPrefIndex, light1Part, light2Part, light3Part, light4Part, light5Part, light6Part);
+        adjustFanVisibility(fanPrefIndex, fan1Part, fan2Part,
+                fan3Part, fan4Part, fan5Part);
 
-                } else if (id == R.id.LtBtn2) {
-                    light1Part.setVisibility(View.VISIBLE);
-                    light2Part.setVisibility(View.VISIBLE);
-                    lightBotPart.setVisibility(View.GONE);
-                } else if (id == R.id.LtBtn3) {
-                    light1Part.setVisibility(View.VISIBLE);
-                    light2Part.setVisibility(View.VISIBLE);
-                    lightBotPart.setVisibility(View.VISIBLE);
-                    light3Part.setVisibility(View.VISIBLE);
-                    light4Part.setVisibility(View.GONE);
-                } else if (id == R.id.LtBtn4) {
-                    light1Part.setVisibility(View.VISIBLE);
-                    light2Part.setVisibility(View.VISIBLE);
-                    lightBotPart.setVisibility(View.VISIBLE);
-                    light3Part.setVisibility(View.VISIBLE);
-                    light4Part.setVisibility(View.VISIBLE);
-                }
-            }
-        }
-        if (!fanPref.isEmpty()) {
-            String[] fanIds = fanPref.split(",");
-            for (String idStr : fanIds) {
-                int id = Integer.parseInt(idStr);
-                if (id == R.id.FanBtn1) {
-                    fan1Part.setVisibility(View.VISIBLE);
-                    fan2Part.setVisibility(View.GONE);
-                    fanBotPart.setVisibility(View.GONE);
-                } else if (id == R.id.FanBtn2) {
-                    fan1Part.setVisibility(View.VISIBLE);
-                    fan2Part.setVisibility(View.VISIBLE);
-                    fanBotPart.setVisibility(View.GONE);
-                } else if (id == R.id.FanBtn3) {
-                    fan1Part.setVisibility(View.VISIBLE);
-                    fan2Part.setVisibility(View.VISIBLE);
-                    fanBotPart.setVisibility(View.VISIBLE);
-                    fan3Part.setVisibility(View.VISIBLE);
-                    fan4Part.setVisibility(View.GONE);
-                } else if (id == R.id.FanBtn4) {
-                    fan1Part.setVisibility(View.VISIBLE);
-                    fan2Part.setVisibility(View.VISIBLE);
-                    fanBotPart.setVisibility(View.VISIBLE);
-                    fan3Part.setVisibility(View.VISIBLE);
-                    fan4Part.setVisibility(View.VISIBLE);
-                }
-            }
-        }
 
         // Set class for drawables from text view of lights and fans
         TextView cn_lt_1_txt = findViewById(R.id.Cn_Light_1_Text);
         TextView cn_lt_2_txt = findViewById(R.id.Cn_Light_2_Text);
         TextView cn_lt_3_txt = findViewById(R.id.Cn_Light_3_Text);
         TextView cn_lt_4_txt = findViewById(R.id.Cn_Light_4_Text);
+        TextView cn_lt_5_txt = findViewById(R.id.Cn_Light_5_Text);
+        TextView cn_lt_6_txt = findViewById(R.id.Cn_Light_6_Text);
 
         TextView cn_fan_1_txt = findViewById(R.id.Cn_Fan_1_Text);
         TextView cn_fan_2_txt = findViewById(R.id.Cn_Fan_2_Text);
         TextView cn_fan_3_txt = findViewById(R.id.Cn_Fan_3_Text);
         TextView cn_fan_4_txt = findViewById(R.id.Cn_Fan_4_Text);
+        TextView cn_fan_5_txt = findViewById(R.id.Cn_Fan_5_Text);
+
+        TextView fan1SeekValue = findViewById(R.id.fan1SeekValue);
+        TextView fan2SeekValue = findViewById(R.id.fan2SeekValue);
+        TextView fan3SeekValue = findViewById(R.id.fan3SeekValue);
+        TextView fan4SeekValue = findViewById(R.id.fan4SeekValue);
+        TextView fan5SeekValue = findViewById(R.id.fan5SeekValue);
 
         // Set class for lights and fans toggle buttons
         ToggleButton lt1Toggle = findViewById(R.id.Cn_LtBtn1);
         ToggleButton lt2Toggle = findViewById(R.id.Cn_LtBtn2);
         ToggleButton lt3Toggle = findViewById(R.id.Cn_LtBtn3);
         ToggleButton lt4Toggle = findViewById(R.id.Cn_LtBtn4);
+        ToggleButton lt5Toggle = findViewById(R.id.Cn_LtBtn5);
+        ToggleButton lt6Toggle = findViewById(R.id.Cn_LtBtn6);
 
         ToggleButton fan1Toggle = findViewById(R.id.Cn_FanBtn1);
         ToggleButton fan2Toggle = findViewById(R.id.Cn_FanBtn2);
         ToggleButton fan3Toggle = findViewById(R.id.Cn_FanBtn3);
         ToggleButton fan4Toggle = findViewById(R.id.Cn_FanBtn4);
+        ToggleButton fan5Toggle = findViewById(R.id.Cn_FanBtn5);
 
         // Set class for seekbars of fans
         SeekBar fan1SeekBar = findViewById(R.id.seekb_fan1);
         SeekBar fan2SeekBar = findViewById(R.id.seekb_fan2);
         SeekBar fan3SeekBar = findViewById(R.id.seekb_fan3);
         SeekBar fan4SeekBar = findViewById(R.id.seekb_fan4);
+        SeekBar fan5SeekBar = findViewById(R.id.seekb_fan5);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
@@ -184,60 +151,82 @@ public class Control extends AppCompatActivity {
         boolean isLt2On = sharedPreferences.getBoolean("isLt2On", false);
         boolean isLt3On = sharedPreferences.getBoolean("isLt3On", false);
         boolean isLt4On = sharedPreferences.getBoolean("isLt4On", false);
+        boolean isLt5On = sharedPreferences.getBoolean("isLt5On", false);
+        boolean isLt6On = sharedPreferences.getBoolean("isLt6On", false);
 
         boolean isFan1On = sharedPreferences.getBoolean("isFan1On", false);
         boolean isFan2On = sharedPreferences.getBoolean("isFan2On", false);
         boolean isFan3On = sharedPreferences.getBoolean("isFan3On", false);
         boolean isFan4On = sharedPreferences.getBoolean("isFan4On", false);
+        boolean isFan5On = sharedPreferences.getBoolean("isFan5On", false);
 
         int fan1Progress = sharedPreferences.getInt("fan1Progress", 0);
         int fan2Progress = sharedPreferences.getInt("fan2Progress", 0);
         int fan3Progress = sharedPreferences.getInt("fan3Progress", 0);
         int fan4Progress = sharedPreferences.getInt("fan4Progress", 0);
+        int fan5Progress = sharedPreferences.getInt("fan5Progress", 0);
 
         lt1Toggle.setChecked(isLt1On);
         lt2Toggle.setChecked(isLt2On);
         lt3Toggle.setChecked(isLt3On);
         lt4Toggle.setChecked(isLt4On);
+        lt5Toggle.setChecked(isLt5On);
+        lt5Toggle.setChecked(isLt6On);
 
         fan1Toggle.setChecked(isFan1On);
         fan2Toggle.setChecked(isFan2On);
         fan3Toggle.setChecked(isFan3On);
         fan4Toggle.setChecked(isFan4On);
+        fan5Toggle.setChecked(isFan5On);
 
         fan1SeekBar.setProgress(fan1Progress);
         fan2SeekBar.setProgress(fan2Progress);
         fan3SeekBar.setProgress(fan3Progress);
         fan4SeekBar.setProgress(fan4Progress);
+        fan5SeekBar.setProgress(fan5Progress);
 
+        fan1SeekBar.setEnabled(isFan1On); // Enable or disable SeekBar based on ToggleButton state
+        fan2SeekBar.setEnabled(isFan2On);
+        fan3SeekBar.setEnabled(isFan3On);
+        fan4SeekBar.setEnabled(isFan4On);
+        fan5SeekBar.setEnabled(isFan5On);
+
+        fan1SeekValue.setText(String.valueOf(fan1Progress));
+        fan2SeekValue.setText(String.valueOf(fan2Progress));
+        fan3SeekValue.setText(String.valueOf(fan3Progress));
+        fan4SeekValue.setText(String.valueOf(fan4Progress));
+        fan5SeekValue.setText(String.valueOf(fan5Progress));
 
         cn_lt_1_txt.setCompoundDrawablesWithIntrinsicBounds(isLt1On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
         cn_lt_2_txt.setCompoundDrawablesWithIntrinsicBounds(isLt2On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
         cn_lt_3_txt.setCompoundDrawablesWithIntrinsicBounds(isLt3On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
         cn_lt_4_txt.setCompoundDrawablesWithIntrinsicBounds(isLt4On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
+        cn_lt_5_txt.setCompoundDrawablesWithIntrinsicBounds(isLt5On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
+        cn_lt_6_txt.setCompoundDrawablesWithIntrinsicBounds(isLt6On ? R.drawable.light_white : R.drawable.light, 0, 0, 0);
 
         cn_fan_1_txt.setCompoundDrawablesWithIntrinsicBounds(isFan1On ? R.drawable.fan_white : R.drawable.fan, 0, 0, 0);
         cn_fan_2_txt.setCompoundDrawablesWithIntrinsicBounds(isFan2On ? R.drawable.fan_white : R.drawable.fan, 0, 0, 0);
         cn_fan_3_txt.setCompoundDrawablesWithIntrinsicBounds(isFan3On ? R.drawable.fan_white : R.drawable.fan, 0, 0, 0);
         cn_fan_4_txt.setCompoundDrawablesWithIntrinsicBounds(isFan4On ? R.drawable.fan_white : R.drawable.fan, 0, 0, 0);
+        cn_fan_5_txt.setCompoundDrawablesWithIntrinsicBounds(isFan5On ? R.drawable.fan_white : R.drawable.fan, 0, 0, 0);
 
         // Add Listener to toggle buttons and seekbar, also change the color of drawable
         lt1Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLt1On", isChecked);
             editor.apply();
+            String message = isChecked ? "AA1" : "AA2";
+            sendBluetoothData(message);
             cn_lt_1_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
                     0, 0, 0);
-            String message1 = isChecked ? "AA1" : "AA2";
-            sendBluetoothData(message1);
-
 
         });
         lt2Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLt2On", isChecked);
             editor.apply();
-
+            String message = isChecked ? "AB1" : "AB2";
+            sendBluetoothData(message);
             cn_lt_2_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
                     0, 0, 0);
 
@@ -246,7 +235,8 @@ public class Control extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLt3On", isChecked);
             editor.apply();
-
+            String message = isChecked ? "AC1" : "AC2";
+            sendBluetoothData(message);
             cn_lt_3_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
                     0, 0, 0);
 
@@ -255,8 +245,29 @@ public class Control extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isLt4On", isChecked);
             editor.apply();
-
+            String message = isChecked ? "AD1" : "AD2";
+            sendBluetoothData(message);
             cn_lt_4_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
+                    0, 0, 0);
+
+        });
+        lt5Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isLt5On", isChecked);
+            editor.apply();
+            String message = isChecked ? "AE1" : "AE2";
+            sendBluetoothData(message);
+            cn_lt_5_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
+                    0, 0, 0);
+
+        });
+        lt6Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isLt6On", isChecked);
+            editor.apply();
+            String message = isChecked ? "AF1" : "AF2";
+            sendBluetoothData(message);
+            cn_lt_6_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.light_white : R.drawable.light,
                     0, 0, 0);
 
         });
@@ -267,56 +278,82 @@ public class Control extends AppCompatActivity {
             editor.apply();
             cn_fan_1_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
+            String message = isChecked ? "AG1" : "AG2";
+            sendBluetoothData(message);
+            fan1SeekBar.setEnabled(isChecked); // Enable or disable seekbar based on toggle state
 
         });
         fan2Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isFan2On", isChecked);
             editor.apply();
+            String message = isChecked ? "AH1" : "AH2";
+            sendBluetoothData(message);
             cn_fan_2_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-
+            fan2SeekBar.setEnabled(isChecked);
 
         });
         fan3Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isFan3On", isChecked);
             editor.apply();
+            String message = isChecked ? "AI1" : "AI2";
+            sendBluetoothData(message);
             cn_fan_3_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
-
+            fan3SeekBar.setEnabled(isChecked);
 
         });
         fan4Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("isFan4On", isChecked);
             editor.apply();
+            String message = isChecked ? "AJ1" : "AJ2";
+            sendBluetoothData(message);
             cn_fan_4_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
                     0, 0, 0);
+            fan4SeekBar.setEnabled(isChecked);
 
+        });
+        fan5Toggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFan4On", isChecked);
+            editor.apply();
+            String message = isChecked ? "AJ1" : "AJ2";
+            sendBluetoothData(message);
+            cn_fan_5_txt.setCompoundDrawablesWithIntrinsicBounds(isChecked ? R.drawable.fan_white : R.drawable.fan,
+                    0, 0, 0);
+            fan5SeekBar.setEnabled(isChecked);
 
         });
 
         fan1SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                fan1SeekValue.setText(String.valueOf(progress));
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("fan1Progress", progress);
                 editor.apply();
-
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                // Ensure value is sent when tracking stops
+                if (fan1Toggle.isChecked()) {
+                    int progress = seekBar.getProgress();
+                    String message = "AG" + (progress + 3); // AG3 to AG12
+                    sendBluetoothData(message);
+                }
             }
         });
         fan2SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                fan2SeekValue.setText(String.valueOf(progress));
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("fan2Progress", progress);
                 editor.apply();
@@ -328,11 +365,17 @@ public class Control extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                if (fan2Toggle.isChecked()) {
+                    int progress = seekBar.getProgress();
+                    String message = "AH" + (progress + 3);
+                    sendBluetoothData(message);
+                }
             }
         });
         fan3SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                fan3SeekValue.setText(String.valueOf(progress));
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("fan3Progress", progress);
                 editor.apply();
@@ -344,11 +387,17 @@ public class Control extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                if (fan3Toggle.isChecked()) {
+                    int progress = seekBar.getProgress();
+                    String message = "AI" + (progress + 3);
+                    sendBluetoothData(message);
+                }
             }
         });
         fan4SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                fan4SeekValue.setText(String.valueOf(progress));
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("fan4Progress", progress);
                 editor.apply();
@@ -360,19 +409,136 @@ public class Control extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                if (fan4Toggle.isChecked()) {
+                    int progress = seekBar.getProgress();
+                    String message = "AJ" + (progress + 3);
+                    sendBluetoothData(message);
+                }
+            }
+        });
+        fan5SeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                fan5SeekValue.setText(String.valueOf(progress));
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("fan4Progress", progress);
+                editor.apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                if (fan5Toggle.isChecked()) {
+                    int progress = seekBar.getProgress();
+                    String message = "AK" + (progress + 3);
+                    sendBluetoothData(message);
+                }
             }
         });
 
 
     }
+    private void adjustLightVisibility(int index, RelativeLayout light1, RelativeLayout light2,
+                                       RelativeLayout light3, RelativeLayout light4, RelativeLayout light5,
+                                       RelativeLayout light6) {
+        if (index == -1) return;
+
+        light1.setVisibility(View.GONE);
+        light2.setVisibility(View.GONE);
+        light3.setVisibility(View.GONE);
+        light4.setVisibility(View.GONE);
+        light5.setVisibility(View.GONE);
+        light6.setVisibility(View.GONE);
+
+        switch (index) {
+            case 0:
+                light1.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                light1.setVisibility(View.VISIBLE);
+                light2.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                light1.setVisibility(View.VISIBLE);
+                light2.setVisibility(View.VISIBLE);
+                light3.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                light1.setVisibility(View.VISIBLE);
+                light2.setVisibility(View.VISIBLE);
+                light3.setVisibility(View.VISIBLE);
+                light4.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                light1.setVisibility(View.VISIBLE);
+                light2.setVisibility(View.VISIBLE);
+                light3.setVisibility(View.VISIBLE);
+                light4.setVisibility(View.VISIBLE);
+                light5.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                light1.setVisibility(View.VISIBLE);
+                light2.setVisibility(View.VISIBLE);
+                light3.setVisibility(View.VISIBLE);
+                light4.setVisibility(View.VISIBLE);
+                light5.setVisibility(View.VISIBLE);
+                light6.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private void adjustFanVisibility(int index, RelativeLayout fan1, RelativeLayout fan2, RelativeLayout fan3,
+                                     RelativeLayout fan4, RelativeLayout fan5) {
+        if (index == -1) return;
+
+        fan1.setVisibility(View.GONE);
+        fan2.setVisibility(View.GONE);
+        fan3.setVisibility(View.GONE);
+        fan4.setVisibility(View.GONE);
+        fan5.setVisibility(View.GONE);
+
+        switch (index) {
+            case 0:
+                fan1.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                fan1.setVisibility(View.VISIBLE);
+                fan2.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                fan1.setVisibility(View.VISIBLE);
+                fan2.setVisibility(View.VISIBLE);
+                fan3.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                fan1.setVisibility(View.VISIBLE);
+                fan2.setVisibility(View.VISIBLE);
+                fan3.setVisibility(View.VISIBLE);
+                fan4.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                fan1.setVisibility(View.VISIBLE);
+                fan2.setVisibility(View.VISIBLE);
+                fan3.setVisibility(View.VISIBLE);
+                fan4.setVisibility(View.VISIBLE);
+                fan5.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
 
     private void connectToHC05() {
-        if (!hasBluetoothPermissions()) {
-            requestBluetoothPermissions();
-            return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!hasBluetoothPermissions()) {
+                requestBluetoothPermissions();
+                return;
+            }
         }
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -410,11 +576,13 @@ public class Control extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     private boolean hasBluetoothPermissions() {
         return ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     private void requestBluetoothPermissions() {
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.BLUETOOTH_CONNECT, android.Manifest.permission.BLUETOOTH_SCAN},

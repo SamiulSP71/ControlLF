@@ -23,345 +23,361 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="17dp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
-
-
             <RelativeLayout
-                android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_above="@id/main">
+                android:layout_centerHorizontal="true"
 
-                <TextView
-                    android:id="@+id/SetupTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
 
-                    android:layout_centerInParent="true"
-
-                    android:text="Setup Your Room Here"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_centerInParent="true"
-                android:background="@drawable/transparent_bg">
 
                 <RelativeLayout
-                    android:id="@+id/ButtonsPart"
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:padding="20dp">
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/main">
 
-                    <RelativeLayout
-                        android:id="@+id/LightPart"
+                    <TextView
+                        android:id="@+id/SetupTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true">
 
-                        <RelativeLayout
-                            android:id="@+id/LtQn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/textbackground"
-                            android:padding="5dp">
+                        android:layout_centerInParent="true"
 
-                            <TextView
-                                android:id="@+id/LtQnIcon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                app:drawableStartCompat="@drawable/light" />
+                        android:text="Setup Your Room Here"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
 
-                            <TextView
-                                android:id="@+id/LtQnTxt"
-                                android:layout_toEndOf="@id/LtQnIcon"
+                <RelativeLayout
+                    android:id="@+id/main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="5dp"
-
-                                android:textSize="16sp"
-                                android:textColor="@color/white"
-                                android:text="How many Lights do you want to control?"
-                                />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/LtBtnPart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/LtQn"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="15dp">
-
-                            <RadioGroup
-                                android:id="@+id/LtGroup"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <RadioButton
-                                    android:id="@+id/LtBtn1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:background="@drawable/button_color"
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-                                    android:paddingBottom="15dp"
-
-                                    android:text="1"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                                <RadioButton
-                                    android:id="@+id/LtBtn2"
-                                    android:layout_width="wrap_content"
-
-                                    android:layout_height="wrap_content"
-
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
-
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-
-                                    android:paddingBottom="15dp"
-
-                                    android:text="2"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                                <RadioButton
-                                    android:id="@+id/LtBtn3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
-
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-
-                                    android:paddingBottom="15dp"
-
-                                    android:text="3"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                                <RadioButton
-                                    android:id="@+id/LtBtn4"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
-
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-
-                                    android:paddingBottom="15dp"
-
-                                    android:text="4"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                            </RadioGroup>
-
-                        </RelativeLayout>
-                    </RelativeLayout>
-
-                    <View
-                        android:id="@+id/partline"
-                        android:layout_below="@id/LightPart"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/ltgray"
-                        />
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/transparent_bg">
 
                     <RelativeLayout
-                        android:id="@+id/FanPart"
-                        android:layout_below="@id/partline"
+                        android:id="@+id/ButtonsPart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:layout_marginTop="20dp">
-
-                        <RelativeLayout
-                            android:id="@+id/FanQn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/textbackground"
-                            android:layout_centerHorizontal="true"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:id="@+id/FanQnIcon"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_centerVertical="true"
-                                android:textColor="@color/white"
-                                app:drawableStartCompat="@drawable/fan" />
-
-                            <TextView
-                                android:id="@+id/FanQntxt"
-                                android:layout_toEndOf="@id/FanQnIcon"
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="5dp"
-
-                                android:textSize="16sp"
-                                android:textColor="@color/white"
-                                android:text="How many Fans do you want to Control?"
-                                />
-                        </RelativeLayout>
+                        android:layout_centerInParent="true"
+                        android:padding="20dp">
 
                         <RelativeLayout
-                            android:id="@+id/FanBtnPart"
+                            android:id="@+id/LightPart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/FanQn"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="15dp">
+                            android:layout_centerHorizontal="true">
 
-                            <RadioGroup
-                                android:id="@+id/FanGroup"
+                            <RelativeLayout
+                                android:id="@+id/LtQn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:background="@drawable/textbackground"
+                                android:padding="5dp">
 
-                                <RadioButton
-                                    android:id="@+id/FanBtn1"
+                                <TextView
+                                    android:id="@+id/LtQnIcon"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:drawableStart="@drawable/light" />
 
-                                    android:background="@drawable/button_color"
-                                    android:button="@color/transparent"
-
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-                                    android:paddingBottom="15dp"
-
-                                    android:text="1"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                                <RadioButton
-                                    android:id="@+id/FanBtn2"
-                                    android:layout_width="wrap_content"
-
-                                    android:layout_height="wrap_content"
-
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
-
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-
-                                    android:paddingBottom="15dp"
-
-                                    android:text="2"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-
-                                    />
-
-                                <RadioButton
-                                    android:id="@+id/FanBtn3"
+                                <TextView
+                                    android:id="@+id/LtQnTxt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
-
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
-
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
-
-                                    android:paddingBottom="15dp"
-
-                                    android:text="3"
-                                    android:textAlignment="center"
+                                    android:layout_toEndOf="@id/LtQnIcon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
+                                    android:text="How many Lights do you want to control?" />
+                            </RelativeLayout>
 
-                                    />
+                            <RelativeLayout
+                                android:id="@+id/LtBtnPart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/LtQn"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp">
+                                <RelativeLayout
+                                    android:id="@+id/LightTopGrid"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
 
-                                <RadioButton
-                                    android:id="@+id/FanBtn4"
+                                    <RadioButton
+                                        android:id="@+id/LtBtn1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/LtBtn2"
+                                        android:layout_toEndOf="@id/LtBtn1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="2"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/LtBtn3"
+                                        android:layout_toEndOf="@id/LtBtn2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="3"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:layout_below="@id/LightTopGrid"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp">
 
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/button_color"
+                                    <RadioButton
+                                        android:id="@+id/LtBtn4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="4"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
 
-                                    android:button="@color/transparent"
-                                    android:paddingStart="25dp"
-                                    android:paddingTop="15dp"
-                                    android:paddingEnd="25dp"
+                                    <RadioButton
+                                        android:id="@+id/LtBtn5"
+                                        android:layout_toEndOf="@id/LtBtn4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="5"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
 
-                                    android:paddingBottom="15dp"
+                                    <RadioButton
+                                        android:id="@+id/LtBtn6"
+                                        android:layout_toEndOf="@id/LtBtn5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="6"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+                                </RelativeLayout>
+                            </RelativeLayout>
 
-                                    android:text="4"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
 
-                                    />
-                            </RadioGroup>
 
                         </RelativeLayout>
 
+                        <View
+                            android:id="@+id/partline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/LightPart"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/ltgray" />
+
+                        <RelativeLayout
+                            android:id="@+id/FanPart"
+                            android:layout_below="@id/partline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <RelativeLayout
+                                android:id="@+id/FanQn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/textbackground"
+                                android:layout_centerHorizontal="true"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/FanQnIcon"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_centerVertical="true"
+                                    android:textColor="@color/white"
+                                    android:drawableStart="@drawable/fan" />
+
+                                <TextView
+                                    android:id="@+id/FanQntxt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@id/FanQnIcon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/white"
+                                    android:text="How many Fans do you want to Control?" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/FanBtnPart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/FanQn"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp">
+                                <RelativeLayout
+                                    android:id="@+id/FanTopGrid"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <RadioButton
+                                        android:id="@+id/FanBtn1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="1"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/FanBtn2"
+                                        android:layout_toEndOf="@id/FanBtn1"
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+
+                                        android:layout_marginStart="10dp"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+
+                                        android:text="2"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/FanBtn3"
+                                        android:layout_toEndOf="@id/FanBtn2"
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+
+                                        android:layout_marginStart="10dp"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="3"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:id="@+id/FanBotGrid"
+                                    android:layout_below="@id/FanTopGrid"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginTop="10dp"
+                                    android:layout_centerHorizontal="true"
+                                    >
+
+
+                                    <RadioButton
+                                        android:id="@+id/FanBtn4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="4"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/FanBtn5"
+                                        android:layout_toEndOf="@id/FanBtn4"
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+
+
+                                        android:layout_marginStart="10dp"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:text="5"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+                                </RelativeLayout>
+                            </RelativeLayout>
+                        </RelativeLayout>
                     </RelativeLayout>
 
-
                 </RelativeLayout>
+
+
+
             </RelativeLayout>
-
-
-
-        </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>
