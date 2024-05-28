@@ -18,10 +18,18 @@
             android:scaleType="centerCrop"
             android:src="@drawable/mobile_background_blur" />
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="20dp">
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current app Version: v0.102"
+                android:textSize="16sp"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +48,7 @@
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/more_bg"
-                    android:padding="15dp"
+                    android:padding="20dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:text="@string/about_us"
@@ -60,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/more_bg"
 
-                    android:padding="15dp"
+                    android:padding="20dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:text="Contact us for any Help"
@@ -80,11 +88,12 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/more_bg"
 
-                    android:padding="15dp"
+                    android:padding="20dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:text="Check for Update"
                     />
+
                 <View
                     android:id="@+id/border4"
                     android:layout_below="@id/update"
@@ -99,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/more_bg"
 
-                    android:padding="15dp"
+                    android:padding="20dp"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:text="Check our More Products"
@@ -163,6 +172,7 @@
                     />
 
             </RelativeLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 
