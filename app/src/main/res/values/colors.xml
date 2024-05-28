@@ -5,6 +5,8 @@
     <color name="primaryvr">#005FED</color>
     <color name="onprimary">#5E5E5E</color>
 
+    <color name="loadingText">#20B1FF</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ltgray">#BEBEBE</color>

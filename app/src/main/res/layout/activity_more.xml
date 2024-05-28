@@ -53,29 +53,9 @@
                     android:layout_height="1dp"
                     android:background="@color/ltgray"
                     />
-
-                <TextView
-                    android:id="@+id/update"
-                    android:layout_below="@id/border2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/more_bg"
-
-                    android:padding="15dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:text="Check for Update"
-                    />
-                <View
-                    android:id="@+id/border3"
-                    android:layout_below="@id/update"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/ltgray"
-                    />
                 <TextView
                     android:id="@+id/help"
-                    android:layout_below="@id/border3"
+                    android:layout_below="@id/border2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/more_bg"
@@ -86,8 +66,28 @@
                     android:text="Contact us for any Help"
                     />
                 <View
-                    android:id="@+id/border4"
+                    android:id="@+id/border3"
                     android:layout_below="@id/help"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ltgray"
+                    />
+
+                <TextView
+                    android:id="@+id/update"
+                    android:layout_below="@id/border3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_bg"
+
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="Check for Update"
+                    />
+                <View
+                    android:id="@+id/border4"
+                    android:layout_below="@id/update"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/ltgray"

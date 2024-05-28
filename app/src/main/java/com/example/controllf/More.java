@@ -54,16 +54,16 @@ public class More extends AppCompatActivity {
 
         TextView chkupdate = findViewById(R.id.update);
         chkupdate.setOnClickListener(v -> {
-            Intent intent = new Intent(More.this, CheckUpdate.class);
-            intent.putExtra("upUrl", "https://samtoyet.blogspot.com/2023/03/samtoy-android-app.html");
-            startActivity(intent);
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://samtoyet.blogspot.com/2024/05/controllf-android-app.html"));
+            startActivity(browserIntent);
         });
 
         TextView chkmproducts = findViewById(R.id.checkpd);
         chkmproducts.setOnClickListener(v -> {
-            Intent intent = new Intent(More.this, CheckMProduct.class);
-            intent.putExtra("prUrl", "https://samtoyet.blogspot.com/index.html");
-            startActivity(intent);
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://samtoyet.blogspot.com/index.html"));
+            startActivity(browserIntent);
         });
 
         RelativeLayout conHelpBox = findViewById(R.id.helpbox);
@@ -79,7 +79,7 @@ public class More extends AppCompatActivity {
 
         TextView teleBtn = findViewById(R.id.telegramBtn);
         teleBtn.setOnClickListener(view ->{
-            Uri uri = Uri.parse("https://t.me/+GdNsZKQTZ38yYzVl");
+            Uri uri = Uri.parse("https://t.me/+VvTmlrVtGFNlMDQ9");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
@@ -91,7 +91,7 @@ public class More extends AppCompatActivity {
         });
         TextView msnBtn = findViewById(R.id.messengerBtn);
         msnBtn.setOnClickListener(view ->{
-            Uri uri = Uri.parse("https://m.me/j/AbY4WUpv_Ql0BHBp/");
+            Uri uri = Uri.parse("https://m.me/j/AbbeiclbI4cTALuh/");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });

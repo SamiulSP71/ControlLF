@@ -206,6 +206,23 @@
                                         android:text="6"
                                         android:textAlignment="center"
                                         android:textColor="@color/white" />
+
+                                    <RadioButton
+                                        android:id="@+id/LtBtn7"
+                                        android:layout_below="@id/LtBtn4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/button_color"
+                                        android:button="@android:color/transparent"
+                                        android:paddingStart="25dp"
+                                        android:paddingTop="15dp"
+                                        android:paddingEnd="25dp"
+                                        android:paddingBottom="15dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="7"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
                                 </RelativeLayout>
                             </RelativeLayout>
 

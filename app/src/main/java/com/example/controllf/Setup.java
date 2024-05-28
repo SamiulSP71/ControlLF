@@ -66,7 +66,8 @@ public class Setup extends AppCompatActivity {
                 findViewById(R.id.LtBtn3),
                 findViewById(R.id.LtBtn4),
                 findViewById(R.id.LtBtn5),
-                findViewById(R.id.LtBtn6)
+                findViewById(R.id.LtBtn6),
+                findViewById(R.id.LtBtn7)
         };
 
         RadioButton[] fanButtons = {

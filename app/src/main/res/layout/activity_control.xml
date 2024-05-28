@@ -116,6 +116,7 @@
 
 
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Light_2_Part"
                                     android:layout_toEndOf="@id/Cn_Light_1_Part"
                                     android:layout_width="wrap_content"
@@ -171,6 +172,7 @@
 
                                 >
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Light_3_Part"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -215,6 +217,7 @@
                                 </RelativeLayout>
 
                                 <RelativeLayout
+                                    android:visibility="gone"
 
                                     android:id="@+id/Cn_Light_4_Part"
                                     android:layout_toEndOf="@id/Cn_Light_3_Part"
@@ -270,6 +273,7 @@
 
                                 >
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Light_5_Part"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -314,6 +318,7 @@
                                 </RelativeLayout>
 
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Light_6_Part"
                                     android:layout_toEndOf="@id/Cn_Light_5_Part"
                                     android:layout_width="wrap_content"
@@ -355,6 +360,50 @@
 
 
                                 </RelativeLayout>
+
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:visibility="gone"
+                                android:id="@+id/Cn_Light_7_Part"
+                                android:layout_below="@id/Cn_Lights_Bot_Grid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent_bg"
+                                android:padding="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                >
+
+                                <TextView
+                                    android:id="@+id/Cn_Light_7_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="center"
+                                    android:paddingEnd="4.5dp"
+
+                                    android:text="Light 7"
+
+
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    app:drawableStartCompat="@drawable/light" />
+                                <ToggleButton
+                                    android:id="@+id/Cn_LtBtn7"
+                                    android:layout_below="@id/Cn_Light_7_Text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:background="@drawable/button_color"
+                                    android:button="@color/transparent"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+
+                                    android:textColor="@color/white"
+                                    android:textOn="ON"
+                                    android:textOff="OFF" />
 
 
                             </RelativeLayout>
@@ -490,6 +539,7 @@
 
                                 </RelativeLayout>
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Fan_2_Part"
                                     android:layout_toEndOf="@id/Cn_Fan_1_Part"
 
@@ -599,6 +649,7 @@
 
                                 >
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Fan_3_Part"
 
                                     android:layout_width="wrap_content"
@@ -692,6 +743,7 @@
 
                                 </RelativeLayout>
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Fan_4_Part"
                                     android:layout_toEndOf="@id/Cn_Fan_3_Part"
 
@@ -801,6 +853,7 @@
 
                                 >
                                 <RelativeLayout
+                                    android:visibility="gone"
                                     android:id="@+id/Cn_Fan_5_Part"
 
                                     android:layout_width="wrap_content"
